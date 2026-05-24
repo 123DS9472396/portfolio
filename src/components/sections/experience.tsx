@@ -35,7 +35,7 @@ export function ExperienceSection() {
           <p className="mt-4 text-muted-foreground text-sm max-w-lg mx-auto leading-relaxed">3 internships across full-stack development, ML engineering, and data science.</p>
         </div>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="timeline-wrap relative pl-8 border-l border-border/30">
             <div className="timeline-line absolute top-0 left-0 w-px" />
             {experienceConfig.map((item, i) => {

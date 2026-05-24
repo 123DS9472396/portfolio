@@ -23,7 +23,7 @@ export const projects: Project[] = [
     highlights: ["AI-powered warehouse recommendations using ML cosine similarity", "Multi-role authentication (Seeker, Owner, Admin) with RLS policies", "Real-time inventory tracking with live updates across 72+ warehouses", "Interactive dashboards with Recharts and 3D grid visualization", "Smart booking system with automated notifications"],
     tech: { frontend: ["React", "TailwindCSS", "Recharts", "3D Grid UI"], backend: ["Supabase", "PostgreSQL", "RLS", "ML Engine"] },
     image: "/images/projects/smartspace.jpeg",
-    github: "https://github.com/123DS9472396/smart-space",
+    github: "https://github.com/123DS9472396/smartspace",
   },
   {
     id: "omnidetector",
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     highlights: ["Multi-modal input: text symptoms, medical images, voice descriptions", "Hybrid LLM + ML risk assessment engine for clinical analysis", "Evidence-based differential diagnosis with confidence scoring", "Predictive analytics for treatment outcome modeling", "Real-time medical image analysis with CNN classification"],
     tech: { frontend: ["Next.js", "TypeScript", "shadcn/ui", "Recharts"], backend: ["Python", "TensorFlow", "LLM API", "Flask", "CNN", "NLP"] },
     image: "/images/projects/ai-doctor.jpeg",
-    github: "https://github.com/123DS9472396/AI-Doctor",
+    github: "https://github.com/123DS9472396/medical-diagnostic-agent",
   },
   {
     id: "forgery-detection",

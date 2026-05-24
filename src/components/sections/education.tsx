@@ -27,7 +27,7 @@ export function EducationSection() {
           <h2 className="font-display font-bold text-[clamp(2.2rem,5vw,3.5rem)] leading-tight">Academic <span className="text-gradient">Background</span></h2>
         </div>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="edu-card glass-card rounded-3xl p-8 border border-border/50 hover:border-primary/25 transition-colors duration-300">
             <div className="flex flex-col sm:flex-row items-start gap-6">
               <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
