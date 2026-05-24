@@ -47,7 +47,13 @@ export function ExperienceSection() {
                   <div className="exp-card glass-card rounded-2xl p-6 hover:border-primary/25 transition-colors duration-300" style={{ opacity: 0 }}>
                     <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                       <div className="flex items-start gap-3">
-                        <img src={item.logo} alt={item.company} className="w-11 h-11 rounded-xl object-contain bg-white/10 p-1.5 border border-border/40 flex-shrink-0" />
+                        {item.logo ? (
+                          <img src={item.logo} alt={item.company} className="w-11 h-11 rounded-xl object-contain bg-white/10 p-1.5 border border-border/40 flex-shrink-0" />
+                        ) : (
+                          <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
+                            <span className="font-display font-bold text-sm text-primary">{item.company.charAt(0)}</span>
+                          </div>
+                        )}
                         <div>
                           <h3 className="font-display font-bold text-lg">{item.role}</h3>
                           <div className="flex items-center gap-2 mt-1 flex-wrap">
