@@ -22,16 +22,21 @@ export function Cursor() {
       dot.style.top = `${mouseY}px`;
     };
 
-    const onEnterInteractive = () => ring.classList.add("hovering");
-    const onLeaveInteractive = () => ring.classList.remove("hovering");
+    const onEnter = () => ring.classList.add("hovering");
+    const onLeave = () => ring.classList.remove("hovering");
 
     document.addEventListener("mousemove", onMove, { passive: true });
 
-    const interactives = document.querySelectorAll("a, button, [data-cursor]");
-    interactives.forEach((el) => {
-      el.addEventListener("mouseenter", onEnterInteractive);
-      el.addEventListener("mouseleave", onLeaveInteractive);
-    });
+    const bindInteractives = () => {
+      const els = document.querySelectorAll("a, button, [data-cursor]");
+      els.forEach((el) => {
+        el.addEventListener("mouseenter", onEnter);
+        el.addEventListener("mouseleave", onLeave);
+      });
+      return els;
+    };
+
+    const els = bindInteractives();
 
     const animate = () => {
       ringX += (mouseX - ringX) * 0.1;
@@ -44,9 +49,9 @@ export function Cursor() {
 
     return () => {
       document.removeEventListener("mousemove", onMove);
-      interactives.forEach((el) => {
-        el.removeEventListener("mouseenter", onEnterInteractive);
-        el.removeEventListener("mouseleave", onLeaveInteractive);
+      els.forEach((el) => {
+        el.removeEventListener("mouseenter", onEnter);
+        el.removeEventListener("mouseleave", onLeave);
       });
       cancelAnimationFrame(animId);
     };

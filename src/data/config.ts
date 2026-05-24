@@ -1,27 +1,28 @@
 export const siteConfig = {
   name: "Dipesh Sharma",
-  title: "Dipesh Sharma | Full Stack Developer",
+  title: "Dipesh Sharma | Full-Stack Developer & ML Engineer",
   description:
-    "Full Stack Developer specializing in React, TypeScript, Node.js, and AI/ML integration. Building scalable web applications and intelligent systems.",
+    "Computer Engineering Undergrad '26 | Full-Stack Developer | ML & Data Science. Building production-grade web applications and intelligent systems. Open to full-time SDE roles.",
   keywords: [
     "Full Stack Developer",
+    "ML Engineer",
+    "Data Science",
     "React",
     "TypeScript",
     "Next.js",
     "Node.js",
     "Python",
-    "AI/ML",
-    "Web Developer",
+    "YOLO",
     "Dipesh Sharma",
   ],
-  email: "ds9472396ss@gmail.com",
+  email: "dipeshsharma34@apsit.edu.in",
+  phone: "+91-9702575008",
   site: "https://dipeshsharma.me",
-  graduationYear: 2026,
   social: {
     github: "https://github.com/123DS9472396",
     linkedin: "https://www.linkedin.com/in/contact-dipesh-sharma/",
     leetcode: "https://leetcode.com/u/0Gnp35bsad/",
-    email: "ds9472396ss@gmail.com",
+    email: "dipeshsharma34@apsit.edu.in",
   },
   resume:
     "https://drive.google.com/file/d/1Y0B50DqEMpFCc48J2zsHoBfI8bnoYbF_/view?usp=drivesdk",
@@ -30,72 +31,119 @@ export const siteConfig = {
 export const aboutConfig = {
   title: "About Me",
   description: [
-    "I'm a passionate Full Stack Developer with a strong foundation in modern web technologies and AI/ML integration. Currently pursuing my degree with an expected graduation in 2026.",
-    "I specialize in building scalable, performant web applications using React, TypeScript, and Node.js. I have hands-on experience integrating AI models like YOLO, Claude, and Llama into real-world applications.",
-    "When I'm not coding, I'm exploring new technologies, contributing to open-source projects, and solving algorithmic challenges on LeetCode.",
+    "I am a Computer Engineering undergraduate (B.E., CGPA: 8.00) from A.P. Shah Institute of Technology, Thane, graduating in 2026. I build production-grade full-stack web applications and ML-powered systems.",
+    "I have completed 3 internships — as an SDE Intern at ITJOBXS (current), SDE Intern at Mernix Consulting, and Data Science Intern at MedTourEasy — gaining hands-on experience with MERN stack, PHP, MySQL, ML recommendation systems, and deployment pipelines.",
+    "I am actively seeking full-time Software Developer or ML Engineer roles where I can build impactful products at scale. Available immediately for on-site, hybrid, or remote positions.",
   ],
   facts: [
-    { label: "Graduation Year", value: "2026" },
-    { label: "Focus", value: "Full Stack + AI/ML" },
-    { label: "Location", value: "India" },
-    { label: "Available", value: "For Opportunities" },
-  ],
-};
-
-export const skillsConfig = {
-  frontend: [
-    { name: "React", level: 90 },
-    { name: "TypeScript", level: 85 },
-    { name: "Next.js", level: 80 },
-    { name: "JavaScript", level: 92 },
-    { name: "HTML/CSS", level: 95 },
-    { name: "GSAP", level: 75 },
-    { name: "Three.js", level: 65 },
-    { name: "WebGL", level: 60 },
-    { name: "Tailwind CSS", level: 90 },
-  ],
-  backend: [
-    { name: "Node.js", level: 82 },
-    { name: "Python", level: 85 },
-    { name: "FastAPI", level: 75 },
-    { name: "Express.js", level: 80 },
-    { name: "PostgreSQL", level: 78 },
-    { name: "Supabase", level: 80 },
-    { name: "MongoDB", level: 70 },
-    { name: "REST APIs", level: 90 },
-  ],
-  aiml: [
-    { name: "YOLOv8", level: 80 },
-    { name: "OpenCV", level: 75 },
-    { name: "scikit-learn", level: 78 },
-    { name: "LLM Integration", level: 82 },
-    { name: "RAG Systems", level: 75 },
-    { name: "Claude/Groq API", level: 80 },
-  ],
-  tools: [
-    { name: "Git/GitHub", level: 90 },
-    { name: "Docker", level: 68 },
-    { name: "Vite", level: 85 },
-    { name: "Vercel", level: 85 },
-    { name: "VS Code", level: 95 },
+    { label: "Experience", value: "3 Internships" },
+    { label: "CGPA", value: "8.00" },
+    { label: "Location", value: "Thane, India" },
+    { label: "Status", value: "Open to Work" },
   ],
 };
 
 export const experienceConfig = [
   {
-    role: "Full Stack Developer",
-    company: "Freelance / Open Source",
-    period: "2023 - Present",
+    role: "SDE Intern",
+    company: "ITJOBXS",
+    subtitle: "Jobs & Education Platform",
+    type: "Remote",
+    period: "Apr 2025 - Present",
+    location: "Mumbai",
     description:
-      "Building full-stack web applications and AI-powered systems. Working with React, TypeScript, Python, and various LLM APIs to create production-ready software.",
-    tech: ["React", "TypeScript", "Python", "Node.js", "Supabase"],
+      "Diagnosed a critical bot-spam vulnerability; implemented a PHP hashmap of 100+ validated email domains and Google reCAPTCHA, cutting spam registrations by ~60%. Built end-to-end MERN stack apps for an external client — E-Commerce platform and Student Management System with JWT auth and role-based access control.",
+    tech: ["PHP", "MERN Stack", "JWT", "reCAPTCHA", "MySQL", "React"],
   },
   {
-    role: "AI/ML Developer",
-    company: "Personal Projects",
-    period: "2024 - Present",
+    role: "SDE Intern",
+    company: "Mernix Consulting",
+    subtitle: "Freelance Project",
+    type: "Remote",
+    period: "Jan 2025 - Feb 2025",
+    location: "Thane",
     description:
-      "Developed real-time object detection systems using YOLOv8 neural networks. Built medical diagnostic AI with GROQ API integration and multi-model fallback architecture.",
-    tech: ["Python", "YOLOv8", "Streamlit", "FastAPI", "GROQ API"],
+      "Built a full-stack Newsletter Subscription App with Nodemailer automated confirmations and debounced API calls for real-time subscription status checks. Optimized backend with a MySQL connection pool; deployed on Firebase (frontend) and Render (backend) with environment-based credential management.",
+    tech: ["Node.js", "MySQL", "Nodemailer", "Firebase", "Render", "Express.js"],
+  },
+  {
+    role: "Data Science Intern",
+    company: "MedTourEasy",
+    subtitle: "Healthcare & Tourism Platform",
+    type: "Hybrid",
+    period: "Sep 2024 - Oct 2024",
+    location: "Gurugram",
+    description:
+      "Built a content-based ML recommendation system using word embeddings and t-SNE dimensionality reduction on 200+ cosmetic products, improving match accuracy by 75%. Designed interactive dashboards mapping product similarities and safety profiles, boosting stakeholder decision-making efficiency by 30%. Conducted chemical composition analysis to identify eco-friendly ingredient alternatives.",
+    tech: ["Python", "Scikit-Learn", "t-SNE", "Pandas", "Matplotlib", "NLP"],
   },
 ];
+
+export const certificationsConfig = [
+  {
+    title: "Google Data Analytics",
+    issuer: "Google",
+    date: "Sep 2024",
+  },
+  {
+    title: "Google AI-ML",
+    issuer: "EduSkills",
+    date: "Jul 2024",
+  },
+  {
+    title: "AWS Academy Data Engineering",
+    issuer: "Amazon Web Services",
+    date: "Oct 2023",
+  },
+  {
+    title: "AWS Academy Cloud Foundations",
+    issuer: "Amazon Web Services",
+    date: "Oct 2023",
+  },
+  {
+    title: "Getting Started with Deep Learning",
+    issuer: "NVIDIA",
+    date: "2024",
+  },
+];
+
+export const skillsConfig = {
+  languages: [
+    { name: "Python", level: 90 },
+    { name: "JavaScript", level: 92 },
+    { name: "TypeScript", level: 85 },
+    { name: "SQL", level: 82 },
+  ],
+  frontend: [
+    { name: "React.js", level: 92 },
+    { name: "Next.js", level: 82 },
+    { name: "HTML/CSS", level: 95 },
+    { name: "Tailwind CSS", level: 92 },
+    { name: "Bootstrap", level: 85 },
+    { name: "GSAP", level: 75 },
+  ],
+  backend: [
+    { name: "Node.js", level: 88 },
+    { name: "Express.js", level: 85 },
+    { name: "MySQL", level: 82 },
+    { name: "MongoDB", level: 80 },
+    { name: "Supabase", level: 82 },
+    { name: "Firebase", level: 75 },
+  ],
+  mlds: [
+    { name: "Scikit-Learn", level: 82 },
+    { name: "TensorFlow", level: 72 },
+    { name: "NumPy/Pandas", level: 88 },
+    { name: "Matplotlib", level: 80 },
+    { name: "OpenCV", level: 78 },
+    { name: "YOLOv8", level: 80 },
+  ],
+  tools: [
+    { name: "Git/GitHub", level: 92 },
+    { name: "VS Code", level: 95 },
+    { name: "Postman", level: 85 },
+    { name: "JWT", level: 82 },
+    { name: "Google Colab", level: 80 },
+    { name: "Render/Vercel", level: 82 },
+  ],
+};

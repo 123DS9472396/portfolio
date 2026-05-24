@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-export function Preloader({ onComplete }: { onComplete?: () => void }) {
+export function Preloader() {
   const overlayRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
   const countRef = useRef<HTMLSpanElement>(null);
@@ -14,7 +14,7 @@ export function Preloader({ onComplete }: { onComplete?: () => void }) {
     if (!overlayRef.current || !barRef.current || !countRef.current) return;
 
     const tl = gsap.timeline();
-    let count = { val: 0 };
+    const count = { val: 0 };
 
     tl.to(count, {
       val: 100,
@@ -31,14 +31,11 @@ export function Preloader({ onComplete }: { onComplete?: () => void }) {
         duration: 0.9,
         ease: "power4.inOut",
         delay: 0.2,
-        onComplete: () => {
-          setVisible(false);
-          onComplete?.();
-        },
+        onComplete: () => setVisible(false),
       });
 
     return () => { tl.kill(); };
-  }, [onComplete]);
+  }, []);
 
   if (!visible) return null;
 

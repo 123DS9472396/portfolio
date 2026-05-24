@@ -10,6 +10,7 @@ const navLinks = [
   { href: "skills", label: "Skills" },
   { href: "projects", label: "Projects" },
   { href: "experience", label: "Experience" },
+  { href: "certifications", label: "Certifications" },
   { href: "contact", label: "Contact" },
 ];
 
@@ -24,9 +25,7 @@ export function Header() {
     const onScroll = () => {
       setScrolled(window.scrollY > 60);
       if (progressRef.current) {
-        const pct =
-          window.scrollY /
-          (document.documentElement.scrollHeight - window.innerHeight);
+        const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
         progressRef.current.style.transform = `scaleX(${pct})`;
       }
     };
@@ -41,7 +40,7 @@ export function Header() {
           if (e.isIntersecting) setActive(e.target.id);
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.3 }
     );
     navLinks.forEach(({ href }) => {
       const el = document.getElementById(href);
@@ -66,23 +65,16 @@ export function Header() {
 
   return (
     <>
-      <div
-        ref={progressRef}
-        className="scroll-progress"
-        style={{ transform: "scaleX(0)" }}
-      />
+      <div ref={progressRef} className="scroll-progress" style={{ transform: "scaleX(0)" }} />
       <header
         ref={headerRef}
         style={{ opacity: 0 }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-          scrolled
-            ? "py-3 bg-[hsl(0,0%,3%)] border-b border-border/40"
-            : "py-5"
+          scrolled ? "py-3 bg-[hsl(0,0%,3%)]/95 backdrop-blur-md border-b border-border/40" : "py-5"
         )}
       >
         <div className="section-container flex items-center justify-between">
-          {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="font-display font-bold text-lg tracking-tight"
@@ -91,7 +83,6 @@ export function Header() {
             <span className="text-muted-foreground/40 font-mono text-xs ml-1">.dev</span>
           </button>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-7">
             {navLinks.map(({ href, label }) => (
               <button
@@ -111,11 +102,10 @@ export function Header() {
               rel="noopener noreferrer"
               className="ml-2 px-4 py-1.5 rounded-full border border-primary/40 font-mono text-xs text-primary hover:bg-primary/10 hover:border-primary/70 transition-all duration-200"
             >
-              Resume ↗
+              Resume
             </a>
           </nav>
 
-          {/* Mobile toggle */}
           <button
             className="md:hidden flex flex-col gap-[5px] p-2"
             onClick={() => setMenuOpen((o) => !o)}
@@ -135,11 +125,10 @@ export function Header() {
           </button>
         </div>
 
-        {/* Mobile drawer */}
         <div
           className={cn(
             "md:hidden overflow-hidden transition-all duration-400 bg-[hsl(0,0%,3%)] border-b border-border/40",
-            menuOpen ? "max-h-80 py-4" : "max-h-0"
+            menuOpen ? "max-h-96 py-4" : "max-h-0"
           )}
         >
           <nav className="section-container flex flex-col gap-1">
@@ -152,14 +141,6 @@ export function Header() {
                 {label}
               </button>
             ))}
-            <a
-              href={siteConfig.resume}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 py-2 text-center rounded-full border border-primary/40 font-mono text-xs text-primary"
-            >
-              Resume ↗
-            </a>
           </nav>
         </div>
       </header>

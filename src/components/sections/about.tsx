@@ -15,64 +15,49 @@ export function AboutSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".about-left",
-        { x: -60, opacity: 0 },
-        {
-          x: 0, opacity: 1, duration: 1, ease: "power3.out",
-          scrollTrigger: { trigger: ".about-left", start: "top 80%", once: true },
-        }
-      );
-      gsap.fromTo(
-        ".about-right",
-        { x: 60, opacity: 0 },
-        {
-          x: 0, opacity: 1, duration: 1, ease: "power3.out",
-          scrollTrigger: { trigger: ".about-right", start: "top 80%", once: true },
-        }
-      );
-      gsap.fromTo(
-        ".about-stat",
-        { y: 30, opacity: 0 },
-        {
-          y: 0, opacity: 1, stagger: 0.1, duration: 0.7, ease: "power2.out",
-          scrollTrigger: { trigger: ".about-stat", start: "top 85%", once: true },
-        }
-      );
+      gsap.fromTo(".about-left", { x: -60, opacity: 0 }, {
+        x: 0, opacity: 1, duration: 1, ease: "power3.out",
+        scrollTrigger: { trigger: ".about-left", start: "top 80%", once: true },
+      });
+      gsap.fromTo(".about-right", { x: 60, opacity: 0 }, {
+        x: 0, opacity: 1, duration: 1, ease: "power3.out",
+        scrollTrigger: { trigger: ".about-right", start: "top 80%", once: true },
+      });
+      gsap.fromTo(".about-stat", { y: 30, opacity: 0 }, {
+        y: 0, opacity: 1, stagger: 0.1, duration: 0.7, ease: "power2.out",
+        scrollTrigger: { trigger: ".about-stat", start: "top 85%", once: true },
+      });
     }, sectionRef);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="py-36 relative">
+    <section ref={sectionRef} id="about" className="py-32 relative">
       <div className="orb orb-warm absolute w-[400px] h-[400px] top-1/2 -right-48 -translate-y-1/2 opacity-60" />
 
       <div className="section-container relative z-10">
-        {/* Header */}
         <div className="about-right mb-16 text-center">
           <div className="section-label justify-center mb-3">
             <span className="font-mono text-xs text-primary tracking-[0.2em] uppercase">About</span>
           </div>
           <h2 className="font-display font-bold text-[clamp(2.2rem,5vw,3.5rem)] leading-tight">
-            Crafting Digital <span className="text-gradient">Experiences</span>
+            Who I <span className="text-gradient">Am</span>
           </h2>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left — image */}
           <div className="about-left relative order-2 lg:order-1">
-            <div className="relative max-w-[420px] mx-auto">
+            <div className="relative max-w-[400px] mx-auto">
               <div className="glass-card rounded-3xl overflow-hidden aspect-[4/5]">
                 <Image
-                  src="https://images.pexels.com/photos/4974912/pexels-photo-4974912.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Developer at work"
+                  src="/images/profile.jpeg"
+                  alt="Dipesh Sharma"
                   fill
-                  className="object-cover opacity-60"
+                  className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
 
-                {/* Stats overlay */}
-                <div className="absolute bottom-6 left-5 right-5 grid grid-cols-2 gap-2.5">
+                <div className="absolute bottom-5 left-4 right-4 grid grid-cols-2 gap-2.5">
                   {aboutConfig.facts.map((f) => (
                     <div key={f.label} className="about-stat glass rounded-xl p-3 border border-white/[0.07]">
                       <div className="font-display font-bold text-sm text-primary">{f.value}</div>
@@ -82,15 +67,13 @@ export function AboutSection() {
                 </div>
               </div>
 
-              {/* Floating tag */}
               <div className="float-anim absolute -top-4 -right-4 glass rounded-2xl px-4 py-2.5 border border-primary/20">
                 <div className="font-mono text-xs text-primary">dipeshsharma.me</div>
               </div>
             </div>
           </div>
 
-          {/* Right — content */}
-          <div className="about-right order-1 lg:order-2 flex flex-col gap-6">
+          <div className="about-right order-1 lg:order-2 flex flex-col gap-5">
             {aboutConfig.description.map((para, i) => (
               <p key={i} className="text-muted-foreground leading-[1.8] text-[0.95rem]">
                 {para}
@@ -107,20 +90,18 @@ export function AboutSection() {
                 </a>
               </div>
               <div className="flex flex-col gap-0.5">
-                <span className="text-[10px] text-muted-foreground uppercase tracking-widest">Portfolio</span>
-                <a href={siteConfig.site} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors text-xs">
-                  dipeshsharma.me
-                </a>
+                <span className="text-[10px] text-muted-foreground uppercase tracking-widest">Location</span>
+                <span className="text-foreground text-xs">India</span>
               </div>
               <div className="flex flex-col gap-0.5">
-                <span className="text-[10px] text-muted-foreground uppercase tracking-widest">Graduation</span>
-                <span className="text-foreground text-xs">{siteConfig.graduationYear}</span>
+                <span className="text-[10px] text-muted-foreground uppercase tracking-widest">Experience</span>
+                <span className="text-foreground text-xs">1.5+ Years</span>
               </div>
               <div className="flex flex-col gap-0.5">
                 <span className="text-[10px] text-muted-foreground uppercase tracking-widest">Status</span>
                 <div className="flex items-center gap-1.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-foreground text-xs">Available</span>
+                  <span className="text-foreground text-xs">Open to Work</span>
                 </div>
               </div>
             </div>

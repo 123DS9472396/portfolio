@@ -30,7 +30,6 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         className="glass-card rounded-3xl border border-border/60 max-w-2xl w-full max-h-[85vh] overflow-y-auto"
         style={{ opacity: 0 }}
       >
-        {/* Hero image */}
         <div className="relative h-52 rounded-t-3xl overflow-hidden">
           <Image src={project.image} alt={project.title} fill className="object-cover opacity-55" />
           <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${project.color}18 0%, transparent 60%)` }} />
@@ -111,7 +110,7 @@ function ProjectCard({ project, index, onClick }: { project: Project; index: num
           src={project.image}
           alt={project.title}
           fill
-          className="object-cover opacity-45 group-hover:opacity-65 group-hover:scale-105 transition-all duration-600"
+          className="object-cover opacity-45 group-hover:opacity-65 group-hover:scale-105 transition-all duration-500"
         />
         <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${project.color}20 0%, transparent 60%)` }} />
         <div className="absolute inset-0 bg-gradient-to-t from-[hsl(0,0%,6%)] via-transparent to-transparent" />
@@ -121,7 +120,6 @@ function ProjectCard({ project, index, onClick }: { project: Project; index: num
             {project.category}
           </span>
         </div>
-        {/* hover links */}
         <div className="absolute top-4 right-4 flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           <a href={project.github} target="_blank" rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
@@ -153,7 +151,7 @@ function ProjectCard({ project, index, onClick }: { project: Project; index: num
         </div>
         <div className="flex items-center gap-1.5 pt-0.5">
           <span className="font-mono text-[11px] text-primary">View Details</span>
-          <span className="text-primary text-xs group-hover:translate-x-1 transition-transform duration-200">→</span>
+          <span className="text-primary text-xs group-hover:translate-x-1 transition-transform duration-200">&rarr;</span>
         </div>
       </div>
     </div>
@@ -166,13 +164,10 @@ export function ProjectsSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".proj-header",
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out",
-          scrollTrigger: { trigger: ".proj-header", start: "top 82%", once: true } }
-      );
-
+      gsap.fromTo(".proj-header", { y: 40, opacity: 0 }, {
+        y: 0, opacity: 1, duration: 0.8, ease: "power3.out",
+        scrollTrigger: { trigger: ".proj-header", start: "top 82%", once: true },
+      });
       projects.forEach((_, i) => {
         gsap.to(`.project-card-${i}`, {
           y: 0, opacity: 1, duration: 0.8, ease: "power3.out",
@@ -185,7 +180,7 @@ export function ProjectsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="projects" className="py-36 relative">
+    <section ref={sectionRef} id="projects" className="py-32 relative">
       <div className="section-container">
         <div className="proj-header text-center mb-16">
           <div className="section-label justify-center mb-3">
@@ -195,7 +190,7 @@ export function ProjectsSection() {
             Featured <span className="text-gradient">Projects</span>
           </h2>
           <p className="mt-4 text-muted-foreground text-sm max-w-lg mx-auto leading-relaxed">
-            Real-world applications built with modern web technologies and AI/ML capabilities.
+            Production applications built with modern web technologies and AI/ML capabilities.
           </p>
         </div>
 

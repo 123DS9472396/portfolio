@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { siteConfig } from "@/data/config";
-import { Providers } from "@/components/providers";
 
 export const metadata: Metadata = {
   title: siteConfig.title,
@@ -17,11 +16,6 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     siteName: siteConfig.name,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.title,
-    description: siteConfig.description,
   },
   robots: { index: true, follow: true },
 };
@@ -42,7 +36,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Providers>{children}</Providers>
+        {children}
       </body>
     </html>
   );

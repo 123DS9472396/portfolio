@@ -26,7 +26,7 @@ export function Footer() {
           </button>
 
           <p className="font-mono text-[11px] text-muted-foreground text-center">
-            &copy; {new Date().getFullYear()} Dipesh Sharma &mdash; Built with Next.js, GSAP, Three.js &amp; TypeScript
+            &copy; {new Date().getFullYear()} Dipesh Sharma &mdash; Built with Next.js, GSAP &amp; TypeScript
           </p>
 
           <div className="flex items-center gap-3">
