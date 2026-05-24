@@ -46,11 +46,14 @@ export function ExperienceSection() {
                   <div className="timeline-dot" style={{ opacity: 0, transform: "scale(0.4)" }} />
                   <div className="exp-card glass-card rounded-2xl p-6 hover:border-primary/25 transition-colors duration-300" style={{ opacity: 0 }}>
                     <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
-                      <div>
-                        <h3 className="font-display font-bold text-lg">{item.role}</h3>
-                        <div className="flex items-center gap-2 mt-1 flex-wrap">
-                          <span className="font-mono text-xs text-primary font-medium">{item.company}</span>
-                          {item.subtitle && (<><span className="w-1 h-1 rounded-full bg-border" /><span className="font-mono text-[11px] text-muted-foreground">{item.subtitle}</span></>)}
+                      <div className="flex items-start gap-3">
+                        <img src={item.logo} alt={item.company} className="w-11 h-11 rounded-xl object-contain bg-white/10 p-1.5 border border-border/40 flex-shrink-0" />
+                        <div>
+                          <h3 className="font-display font-bold text-lg">{item.role}</h3>
+                          <div className="flex items-center gap-2 mt-1 flex-wrap">
+                            <span className="font-mono text-xs text-primary font-medium">{item.company}</span>
+                            {item.subtitle && (<><span className="w-1 h-1 rounded-full bg-border" /><span className="font-mono text-[11px] text-muted-foreground">{item.subtitle}</span></>)}
+                          </div>
                         </div>
                       </div>
                       <div className="flex flex-col items-end gap-1.5">
@@ -69,22 +72,6 @@ export function ExperienceSection() {
                 </div>
               );
             })}
-          </div>
-        </div>
-
-        <div className="max-w-3xl mx-auto mt-12">
-          <div className="glass-card rounded-2xl p-6">
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <div>
-                <h3 className="font-display font-bold text-lg">B.E. Computer Engineering</h3>
-                <span className="font-mono text-xs text-primary">A.P. Shah Institute of Technology (APSIT)</span>
-                <p className="font-mono text-[11px] text-muted-foreground mt-1">Thane, Mumbai</p>
-              </div>
-              <div className="flex flex-col items-end gap-1.5">
-                <span className="font-mono text-[10px] text-muted-foreground px-3 py-1 rounded-full border border-border/60">2022 - 2026</span>
-                <span className="font-mono text-xs text-emerald-400 font-medium">CGPA: 8.00</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
