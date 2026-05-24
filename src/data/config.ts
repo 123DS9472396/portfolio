@@ -2,19 +2,7 @@ export const siteConfig = {
   name: "Dipesh Sharma",
   title: "Dipesh Sharma | Full-Stack Developer & ML Engineer",
   description:
-    "Computer Engineering Undergrad '26 | Full-Stack Developer | ML & Data Science. Building production-grade web applications and intelligent systems. Open to full-time SDE roles.",
-  keywords: [
-    "Full Stack Developer",
-    "ML Engineer",
-    "Data Science",
-    "React",
-    "TypeScript",
-    "Next.js",
-    "Node.js",
-    "Python",
-    "YOLO",
-    "Dipesh Sharma",
-  ],
+    "Computer Engineering Undergrad '26 | Full-Stack Developer | ML & Data Science. Open to full-time SDE roles.",
   email: "dipeshsharma34@apsit.edu.in",
   phone: "+91-9702575008",
   site: "https://dipeshsharma.me",
@@ -22,14 +10,11 @@ export const siteConfig = {
     github: "https://github.com/123DS9472396",
     linkedin: "https://www.linkedin.com/in/contact-dipesh-sharma/",
     leetcode: "https://leetcode.com/u/0Gnp35bsad/",
-    email: "dipeshsharma34@apsit.edu.in",
   },
-  resume:
-    "https://drive.google.com/file/d/1Y0B50DqEMpFCc48J2zsHoBfI8bnoYbF_/view?usp=drivesdk",
+  resume: "https://drive.google.com/file/d/1Y0B50DqEMpFCc48J2zsHoBfI8bnoYbF_/view?usp=drivesdk",
 };
 
 export const aboutConfig = {
-  title: "About Me",
   description: [
     "I am a Computer Engineering undergraduate (B.E., CGPA: 8.00) from A.P. Shah Institute of Technology, Thane, graduating in 2026. I build production-grade full-stack web applications and ML-powered systems.",
     "I have completed 3 internships — as an SDE Intern at ITJOBXS (current), SDE Intern at Mernix Consulting, and Data Science Intern at MedTourEasy — gaining hands-on experience with MERN stack, PHP, MySQL, ML recommendation systems, and deployment pipelines.",
@@ -74,37 +59,17 @@ export const experienceConfig = [
     period: "Sep 2024 - Oct 2024",
     location: "Gurugram",
     description:
-      "Built a content-based ML recommendation system using word embeddings and t-SNE dimensionality reduction on 200+ cosmetic products, improving match accuracy by 75%. Designed interactive dashboards mapping product similarities and safety profiles, boosting stakeholder decision-making efficiency by 30%. Conducted chemical composition analysis to identify eco-friendly ingredient alternatives.",
+      "Built a content-based ML recommendation system using word embeddings and t-SNE dimensionality reduction on 200+ cosmetic products, improving match accuracy by 75%. Designed interactive dashboards mapping product similarities and safety profiles, boosting stakeholder decision-making efficiency by 30%.",
     tech: ["Python", "Scikit-Learn", "t-SNE", "Pandas", "Matplotlib", "NLP"],
   },
 ];
 
 export const certificationsConfig = [
-  {
-    title: "Google Data Analytics",
-    issuer: "Google",
-    date: "Sep 2024",
-  },
-  {
-    title: "Google AI-ML",
-    issuer: "EduSkills",
-    date: "Jul 2024",
-  },
-  {
-    title: "AWS Academy Data Engineering",
-    issuer: "Amazon Web Services",
-    date: "Oct 2023",
-  },
-  {
-    title: "AWS Academy Cloud Foundations",
-    issuer: "Amazon Web Services",
-    date: "Oct 2023",
-  },
-  {
-    title: "Getting Started with Deep Learning",
-    issuer: "NVIDIA",
-    date: "2024",
-  },
+  { title: "Google Data Analytics", issuer: "Google", date: "Sep 2024" },
+  { title: "Google AI-ML", issuer: "EduSkills", date: "Jul 2024" },
+  { title: "AWS Academy Data Engineering", issuer: "Amazon Web Services", date: "Oct 2023" },
+  { title: "AWS Academy Cloud Foundations", issuer: "Amazon Web Services", date: "Oct 2023" },
+  { title: "Getting Started with Deep Learning", issuer: "NVIDIA", date: "2024" },
 ];
 
 export const skillsConfig = {
@@ -134,16 +99,13 @@ export const skillsConfig = {
     { name: "Scikit-Learn", level: 82 },
     { name: "TensorFlow", level: 72 },
     { name: "NumPy/Pandas", level: 88 },
-    { name: "Matplotlib", level: 80 },
     { name: "OpenCV", level: 78 },
     { name: "YOLOv8", level: 80 },
   ],
   tools: [
     { name: "Git/GitHub", level: 92 },
-    { name: "VS Code", level: 95 },
     { name: "Postman", level: 85 },
     { name: "JWT", level: 82 },
-    { name: "Google Colab", level: 80 },
-    { name: "Render/Vercel", level: 82 },
+    { name: "Vercel/Render", level: 82 },
   ],
 };

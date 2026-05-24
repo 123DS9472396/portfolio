@@ -5,26 +5,9 @@ import { siteConfig } from "@/data/config";
 export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
-  keywords: siteConfig.keywords,
-  authors: [{ name: siteConfig.name }],
-  creator: siteConfig.name,
-  metadataBase: new URL(siteConfig.site),
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: siteConfig.site,
-    title: siteConfig.title,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
-  },
-  robots: { index: true, follow: true },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -35,9 +18,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
