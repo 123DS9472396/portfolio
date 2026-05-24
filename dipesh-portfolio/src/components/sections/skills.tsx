@@ -1,138 +1,135 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { skillsConfig } from "@/data/config";
-import { motion, useInView } from "motion/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const techIcons: Record<string, string> = {
-  React: "⚛️",
-  TypeScript: "🔷",
-  "Next.js": "▲",
-  JavaScript: "🟨",
-  "HTML/CSS": "🎨",
-  GSAP: "🟢",
-  "Three.js": "🔲",
-  WebGL: "🌐",
-  "Tailwind CSS": "💨",
-  "Node.js": "🟩",
-  Python: "🐍",
-  FastAPI: "⚡",
-  "Express.js": "🚂",
-  PostgreSQL: "🐘",
-  Supabase: "⚡",
-  MongoDB: "🍃",
-  "REST APIs": "🔗",
-  YOLOv8: "👁️",
-  OpenCV: "📷",
-  "scikit-learn": "🤖",
-  "LLM Integration": "🧠",
-  "RAG Systems": "📚",
-  "Claude/Groq API": "🤖",
-  "Git/GitHub": "🐙",
-  Docker: "🐳",
-  Vite: "⚡",
-  Vercel: "▲",
-  "VS Code": "💙",
+gsap.registerPlugin(ScrollTrigger);
+
+const TECH_TAGS = [
+  "React", "TypeScript", "Next.js", "Node.js", "Python", "FastAPI",
+  "GSAP", "Three.js", "WebGL", "Tailwind CSS", "Supabase", "PostgreSQL",
+  "YOLOv8", "OpenCV", "scikit-learn", "LLM APIs", "Docker", "Git",
+];
+
+const CAT_META: Record<string, { label: string; accent: string }> = {
+  frontend: { label: "Frontend", accent: "#3b82f6" },
+  backend:  { label: "Backend & Database", accent: "#10b981" },
+  aiml:     { label: "AI / Machine Learning", accent: "#f59e0b" },
+  tools:    { label: "Tools & DevOps", accent: "#14b8a6" },
 };
-
-const categoryLabels: Record<string, string> = {
-  frontend: "Frontend",
-  backend: "Backend & Database",
-  aiml: "AI / Machine Learning",
-  tools: "Tools & DevOps",
-};
-
-const categoryColors: Record<string, string> = {
-  frontend: "text-blue-400",
-  backend: "text-green-400",
-  aiml: "text-orange-400",
-  tools: "text-teal-400",
-};
-
-function SkillTag({ name }: { name: string }) {
-  return (
-    <div className="group flex items-center gap-2 px-3 py-2 glass rounded-xl border border-border/60 hover:border-primary/40 transition-all duration-200 cursor-default">
-      <span className="text-sm">{techIcons[name] || "•"}</span>
-      <span className="font-mono text-xs text-muted-foreground group-hover:text-foreground transition-colors">
-        {name}
-      </span>
-    </div>
-  );
-}
 
 export function SkillsSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const sectionRef = useRef<HTMLElement>(null);
 
-  const categories = Object.entries(skillsConfig) as [
-    keyof typeof skillsConfig,
-    (typeof skillsConfig)[keyof typeof skillsConfig]
-  ][];
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".skill-header",
+        { y: 40, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 0.8, ease: "power3.out",
+          scrollTrigger: { trigger: ".skill-header", start: "top 82%", once: true },
+        }
+      );
+
+      gsap.fromTo(
+        ".skill-cat",
+        { y: 50, opacity: 0 },
+        {
+          y: 0, opacity: 1, stagger: 0.12, duration: 0.7, ease: "power2.out",
+          scrollTrigger: { trigger: ".skill-cat", start: "top 80%", once: true },
+        }
+      );
+
+      // Animate skill bars on scroll
+      document.querySelectorAll<HTMLElement>(".skill-bar-fill").forEach((bar) => {
+        const level = bar.getAttribute("data-level") || "0";
+        gsap.fromTo(
+          bar,
+          { scaleX: 0 },
+          {
+            scaleX: parseFloat(level) / 100,
+            duration: 1.2,
+            ease: "power2.out",
+            scrollTrigger: { trigger: bar, start: "top 90%", once: true },
+          }
+        );
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section id="skills" className="py-32 relative">
-      <div className="absolute inset-0 grid-pattern opacity-20" />
+    <section ref={sectionRef} id="skills" className="py-36 relative">
+      <div className="absolute inset-0 grid-bg opacity-20" />
+      <div className="orb orb-blue absolute w-[500px] h-[500px] top-0 left-1/2 -translate-x-1/2 opacity-30" />
 
-      <div className="relative max-w-6xl mx-auto px-6">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16"
-        >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 h-[1px] bg-primary" />
-            <span className="font-mono text-sm text-primary tracking-widest uppercase">
-              Tech Stack
-            </span>
-            <div className="w-8 h-[1px] bg-primary" />
+      <div className="section-container relative z-10">
+        {/* Header */}
+        <div className="skill-header text-center mb-16">
+          <div className="section-label justify-center mb-3">
+            <span className="font-mono text-xs text-primary tracking-[0.2em] uppercase">Stack</span>
           </div>
-          <h2 className="font-display font-bold text-4xl lg:text-5xl">
+          <h2 className="font-display font-bold text-[clamp(2.2rem,5vw,3.5rem)] leading-tight">
             Skills &amp; <span className="text-gradient">Technologies</span>
           </h2>
-          <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-            A comprehensive toolkit for building modern web applications and
-            AI-powered systems.
+          <p className="mt-4 text-muted-foreground text-sm max-w-lg mx-auto leading-relaxed">
+            A full toolkit for building modern web apps and AI-powered systems — from pixel-perfect frontends to intelligent backends.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {categories.map(([key, skills], catIndex) => (
-            <motion.div
-              key={key}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: catIndex * 0.1 }}
-              className="glass rounded-2xl p-6 border border-border/60"
-            >
-              <h3
-                className={`font-mono text-sm font-medium mb-4 ${categoryColors[key]}`}
-              >
-                {categoryLabels[key]}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {skills.map((skill) => (
-                  <SkillTag key={skill.name} name={skill.name} />
-                ))}
-              </div>
-            </motion.div>
-          ))}
+        {/* Skills grid */}
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
+          {(Object.entries(skillsConfig) as [keyof typeof skillsConfig, typeof skillsConfig[keyof typeof skillsConfig]][]).map(
+            ([key, skills]) => {
+              const meta = CAT_META[key];
+              return (
+                <div key={key} className="skill-cat glass-card rounded-2xl p-6">
+                  <h3
+                    className="font-mono text-xs font-semibold mb-5 uppercase tracking-widest"
+                    style={{ color: meta.accent }}
+                  >
+                    {meta.label}
+                  </h3>
+                  <div className="flex flex-col gap-4">
+                    {skills.map((s) => (
+                      <div key={s.name}>
+                        <div className="flex justify-between items-center mb-1.5">
+                          <span className="font-mono text-xs text-foreground/80">{s.name}</span>
+                          <span className="font-mono text-[10px] text-muted-foreground">{s.level}%</span>
+                        </div>
+                        <div className="skill-bar-track">
+                          <div
+                            className="skill-bar-fill"
+                            data-level={s.level}
+                            style={{ background: `linear-gradient(90deg, ${meta.accent}, ${meta.accent}99)` }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+          )}
         </div>
 
         {/* Marquee */}
-        <div className="mt-16 overflow-hidden">
-          <div className="marquee-wrapper py-4">
-            <div className="marquee-inner">
-              {[
-                ...Object.values(techIcons).slice(0, 12),
-                ...Object.values(techIcons).slice(0, 12),
-              ].map((icon, i) => (
-                <span
-                  key={i}
-                  className="text-2xl mx-6 opacity-30 hover:opacity-70 transition-opacity"
-                >
-                  {icon}
+        <div className="marquee-outer py-1">
+          <div className="marquee-track">
+            <div className="marquee-track-inner">
+              {TECH_TAGS.map((t) => (
+                <span key={t} className="font-mono text-xs text-muted-foreground/50 px-2 py-1 border border-border/30 rounded-md whitespace-nowrap">
+                  {t}
+                </span>
+              ))}
+            </div>
+            <div className="marquee-track-inner" aria-hidden="true">
+              {TECH_TAGS.map((t) => (
+                <span key={t + "-2"} className="font-mono text-xs text-muted-foreground/50 px-2 py-1 border border-border/30 rounded-md whitespace-nowrap">
+                  {t}
                 </span>
               ))}
             </div>

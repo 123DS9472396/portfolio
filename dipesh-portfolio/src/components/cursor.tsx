@@ -4,69 +4,50 @@ import { useEffect, useRef } from "react";
 
 export function Cursor() {
   const dotRef = useRef<HTMLDivElement>(null);
-  const outlineRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const dot = dotRef.current;
-    const outline = outlineRef.current;
-    if (!dot || !outline) return;
+    const ring = ringRef.current;
+    if (!dot || !ring) return;
 
-    let mouseX = 0;
-    let mouseY = 0;
-    let outlineX = 0;
-    let outlineY = 0;
+    let mouseX = 0, mouseY = 0;
+    let ringX = 0, ringY = 0;
+    let animId: number;
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const onMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
       dot.style.left = `${mouseX}px`;
       dot.style.top = `${mouseY}px`;
     };
 
-    const handleMouseDown = () => {
-      dot.classList.add("active");
-      outline.classList.add("active");
-    };
+    const onEnterInteractive = () => ring.classList.add("hovering");
+    const onLeaveInteractive = () => ring.classList.remove("hovering");
 
-    const handleMouseUp = () => {
-      dot.classList.remove("active");
-      outline.classList.remove("active");
-    };
+    document.addEventListener("mousemove", onMove, { passive: true });
 
-    const handleMouseEnterLink = () => {
-      dot.classList.add("active");
-      outline.classList.add("active");
-    };
-
-    const handleMouseLeaveLink = () => {
-      dot.classList.remove("active");
-      outline.classList.remove("active");
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mousedown", handleMouseDown);
-    document.addEventListener("mouseup", handleMouseUp);
-
-    const links = document.querySelectorAll("a, button, [data-cursor]");
-    links.forEach((link) => {
-      link.addEventListener("mouseenter", handleMouseEnterLink);
-      link.addEventListener("mouseleave", handleMouseLeaveLink);
+    const interactives = document.querySelectorAll("a, button, [data-cursor]");
+    interactives.forEach((el) => {
+      el.addEventListener("mouseenter", onEnterInteractive);
+      el.addEventListener("mouseleave", onLeaveInteractive);
     });
 
-    let animId: number;
     const animate = () => {
-      outlineX += (mouseX - outlineX) * 0.12;
-      outlineY += (mouseY - outlineY) * 0.12;
-      outline.style.left = `${outlineX}px`;
-      outline.style.top = `${outlineY}px`;
+      ringX += (mouseX - ringX) * 0.1;
+      ringY += (mouseY - ringY) * 0.1;
+      ring.style.left = `${ringX}px`;
+      ring.style.top = `${ringY}px`;
       animId = requestAnimationFrame(animate);
     };
     animate();
 
     return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mousedown", handleMouseDown);
-      document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("mousemove", onMove);
+      interactives.forEach((el) => {
+        el.removeEventListener("mouseenter", onEnterInteractive);
+        el.removeEventListener("mouseleave", onLeaveInteractive);
+      });
       cancelAnimationFrame(animId);
     };
   }, []);
@@ -74,7 +55,7 @@ export function Cursor() {
   return (
     <>
       <div ref={dotRef} className="cursor-dot hidden md:block" />
-      <div ref={outlineRef} className="cursor-outline hidden md:block" />
+      <div ref={ringRef} className="cursor-ring hidden md:block" />
     </>
   );
 }

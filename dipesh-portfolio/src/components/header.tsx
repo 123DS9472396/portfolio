@@ -3,162 +3,166 @@
 import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/data/config";
 import { cn } from "@/lib/utils";
+import gsap from "gsap";
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
+  { href: "about", label: "About" },
+  { href: "skills", label: "Skills" },
+  { href: "projects", label: "Projects" },
+  { href: "experience", label: "Experience" },
+  { href: "contact", label: "Contact" },
 ];
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const [active, setActive] = useState("");
   const headerRef = useRef<HTMLElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 60);
+      if (progressRef.current) {
+        const pct =
+          window.scrollY /
+          (document.documentElement.scrollHeight - window.innerHeight);
+        progressRef.current.style.transform = `scaleX(${pct})`;
+      }
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    const sections = navLinks.map((l) => l.href.replace("#", ""));
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id);
         });
       },
       { threshold: 0.4 }
     );
-
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
+    navLinks.forEach(({ href }) => {
+      const el = document.getElementById(href);
       if (el) observer.observe(el);
     });
-
     return () => observer.disconnect();
   }, []);
 
-  const handleNavClick = (href: string) => {
+  useEffect(() => {
+    if (!headerRef.current) return;
+    gsap.fromTo(
+      headerRef.current,
+      { y: -80, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, delay: 2.2, ease: "power3.out" }
+    );
+  }, []);
+
+  const scrollTo = (id: string) => {
     setMenuOpen(false);
-    const id = href.replace("#", "");
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <header
-      ref={headerRef}
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        scrolled
-          ? "py-3 bg-background/80 backdrop-blur-xl border-b border-border/50"
-          : "py-6"
-      )}
-    >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-          className="font-display font-bold text-xl tracking-tight"
-        >
-          <span className="text-gradient">DS</span>
-          <span className="text-foreground/40 ml-1 text-sm font-normal font-mono">
-            .dev
-          </span>
-        </a>
-
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => handleNavClick(link.href)}
-              className={cn(
-                "nav-link text-sm font-medium transition-colors duration-200",
-                activeSection === link.href.replace("#", "")
-                  ? "text-foreground active"
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-            >
-              {link.label}
-            </button>
-          ))}
-          <a
-            href={siteConfig.resume}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-1.5 text-sm font-medium rounded-full border border-primary/40 text-primary hover:bg-primary/10 transition-all duration-200"
-          >
-            Resume
-          </a>
-        </nav>
-
-        {/* Mobile menu button */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span
-            className={cn(
-              "block w-5 h-0.5 bg-foreground transition-all duration-300",
-              menuOpen && "rotate-45 translate-y-2"
-            )}
-          />
-          <span
-            className={cn(
-              "block w-5 h-0.5 bg-foreground transition-all duration-300",
-              menuOpen && "opacity-0"
-            )}
-          />
-          <span
-            className={cn(
-              "block w-5 h-0.5 bg-foreground transition-all duration-300",
-              menuOpen && "-rotate-45 -translate-y-2"
-            )}
-          />
-        </button>
-      </div>
-
-      {/* Mobile menu */}
+    <>
       <div
+        ref={progressRef}
+        className="scroll-progress"
+        style={{ transform: "scaleX(0)" }}
+      />
+      <header
+        ref={headerRef}
+        style={{ opacity: 0 }}
         className={cn(
-          "md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border/50 transition-all duration-300 overflow-hidden",
-          menuOpen ? "max-h-96 py-4" : "max-h-0 py-0"
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+          scrolled
+            ? "py-3 bg-[hsl(0,0%,3%)] border-b border-border/40"
+            : "py-5"
         )}
       >
-        <nav className="flex flex-col px-6 gap-1">
-          {navLinks.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => handleNavClick(link.href)}
-              className="text-left py-3 text-sm font-medium text-muted-foreground hover:text-foreground border-b border-border/30 last:border-0 transition-colors"
-            >
-              {link.label}
-            </button>
-          ))}
-          <a
-            href={siteConfig.resume}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 px-4 py-2 text-sm font-medium rounded-full border border-primary/40 text-primary text-center hover:bg-primary/10 transition-all"
+        <div className="section-container flex items-center justify-between">
+          {/* Logo */}
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="font-display font-bold text-lg tracking-tight"
           >
-            Resume
-          </a>
-        </nav>
-      </div>
-    </header>
+            <span className="text-gradient">DS</span>
+            <span className="text-muted-foreground/40 font-mono text-xs ml-1">.dev</span>
+          </button>
+
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-7">
+            {navLinks.map(({ href, label }) => (
+              <button
+                key={href}
+                onClick={() => scrollTo(href)}
+                className={cn(
+                  "nav-link text-muted-foreground hover:text-foreground transition-colors duration-200",
+                  active === href && "text-foreground active"
+                )}
+              >
+                {label}
+              </button>
+            ))}
+            <a
+              href={siteConfig.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 px-4 py-1.5 rounded-full border border-primary/40 font-mono text-xs text-primary hover:bg-primary/10 hover:border-primary/70 transition-all duration-200"
+            >
+              Resume ↗
+            </a>
+          </nav>
+
+          {/* Mobile toggle */}
+          <button
+            className="md:hidden flex flex-col gap-[5px] p-2"
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label="Toggle menu"
+          >
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                className={cn(
+                  "block w-5 h-px bg-foreground transition-all duration-300",
+                  menuOpen && i === 0 && "rotate-45 translate-y-[6px]",
+                  menuOpen && i === 1 && "opacity-0",
+                  menuOpen && i === 2 && "-rotate-45 -translate-y-[6px]"
+                )}
+              />
+            ))}
+          </button>
+        </div>
+
+        {/* Mobile drawer */}
+        <div
+          className={cn(
+            "md:hidden overflow-hidden transition-all duration-400 bg-[hsl(0,0%,3%)] border-b border-border/40",
+            menuOpen ? "max-h-80 py-4" : "max-h-0"
+          )}
+        >
+          <nav className="section-container flex flex-col gap-1">
+            {navLinks.map(({ href, label }) => (
+              <button
+                key={href}
+                onClick={() => scrollTo(href)}
+                className="text-left py-3 font-mono text-sm text-muted-foreground hover:text-foreground border-b border-border/30 last:border-0 transition-colors"
+              >
+                {label}
+              </button>
+            ))}
+            <a
+              href={siteConfig.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 py-2 text-center rounded-full border border-primary/40 font-mono text-xs text-primary"
+            >
+              Resume ↗
+            </a>
+          </nav>
+        </div>
+      </header>
+    </>
   );
 }
