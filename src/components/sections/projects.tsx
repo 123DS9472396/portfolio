@@ -1,12 +1,9 @@
-"use client";
-
 import { useEffect, useRef, useState } from "react";
 import { projects, type Project } from "@/data/projects";
 import { SiGithub } from "react-icons/si";
 import { HiExternalLink, HiX } from "react-icons/hi";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,7 +22,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
     <div className="modal-backdrop" onClick={onClose}>
       <div ref={modalRef} onClick={(e) => e.stopPropagation()} className="glass-card rounded-3xl border border-border/60 max-w-2xl w-full max-h-[85vh] overflow-y-auto" style={{ opacity: 0 }}>
         <div className="relative h-52 rounded-t-3xl overflow-hidden">
-          <Image src={project.image} alt={project.title} fill className="object-cover opacity-55" />
+          <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover opacity-55" />
           <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${project.color}18 0%, transparent 60%)` }} />
           <div className="absolute inset-0 bg-gradient-to-t from-[hsl(0,0%,6%)] via-transparent to-transparent" />
           <div className="absolute bottom-5 left-6 right-6">
@@ -59,7 +56,7 @@ function ProjectCard({ project, index, onClick }: { project: Project; index: num
   return (
     <div className={`project-card-${index} glass-card rounded-2xl overflow-hidden cursor-pointer group`} onClick={onClick} style={{ opacity: 0, transform: "translateY(50px)" }}>
       <div className="relative h-52 overflow-hidden">
-        <Image src={project.image} alt={project.title} fill className="object-cover opacity-45 group-hover:opacity-65 group-hover:scale-105 transition-all duration-500" />
+        <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover opacity-45 group-hover:opacity-65 group-hover:scale-105 transition-all duration-500" />
         <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${project.color}20 0%, transparent 60%)` }} />
         <div className="absolute inset-0 bg-gradient-to-t from-[hsl(0,0%,6%)] via-transparent to-transparent" />
         <div className="absolute top-4 left-4"><span className="font-mono text-[10px] px-2 py-1 rounded-full border" style={{ color: project.color, borderColor: `${project.color}40`, background: `${project.color}12` }}>{project.category}</span></div>

@@ -1,5 +1,3 @@
-"use client";
-
 import { siteConfig } from "@/data/config";
 
 export function Footer() {

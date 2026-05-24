@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useRef } from "react";
 import { certificationsConfig, leadershipConfig } from "@/data/config";
 import { SiGoogle, SiNvidia, SiCisco } from "react-icons/si";

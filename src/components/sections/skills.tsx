@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useRef } from "react";
 import { skillsConfig } from "@/data/config";
 import {

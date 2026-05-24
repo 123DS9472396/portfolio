@@ -1,6 +1,5 @@
-"use client";
-
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { FormEvent } from "react";
 import { siteConfig } from "@/data/config";
 import { SiGithub, SiLeetcode } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
@@ -31,9 +30,9 @@ export function ContactSection() {
     setStatus("sending");
 
     try {
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_portfolio";
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_contact";
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_portfolio";
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_contact";
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "";
 
       if (publicKey) {
         await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);

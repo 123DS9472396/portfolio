@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/data/config";
 import { SiGithub, SiLeetcode } from "react-icons/si";
@@ -17,7 +15,7 @@ export function HeroSection() {
 
   useEffect(() => {
     const cur = roles[roleIdx];
-    let t: NodeJS.Timeout;
+    let t: ReturnType<typeof setTimeout>;
     if (!deleting && typed.length < cur.length) t = setTimeout(() => setTyped(cur.slice(0, typed.length + 1)), 75);
     else if (!deleting && typed.length === cur.length) t = setTimeout(() => setDeleting(true), 2200);
     else if (deleting && typed.length > 0) t = setTimeout(() => setTyped(cur.slice(0, typed.length - 1)), 38);

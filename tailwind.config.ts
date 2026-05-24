@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: ["./src/**/*.{ts,tsx}"],
+  content: ["./index.html", "./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -14,12 +14,12 @@ const config: Config = {
         border: "hsl(var(--border))",
       },
       fontFamily: {
-        display: ["var(--font-display)", "sans-serif"],
-        mono: ["var(--font-mono)", "monospace"],
+        display: ["Inter", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [],
 };
 
 export default config;

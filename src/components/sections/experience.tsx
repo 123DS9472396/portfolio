@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useRef } from "react";
 import { experienceConfig } from "@/data/config";
 import gsap from "gsap";

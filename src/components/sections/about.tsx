@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useRef } from "react";
 import { aboutConfig, siteConfig } from "@/data/config";
 import { SiGithub, SiLeetcode } from "react-icons/si";

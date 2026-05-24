@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -18,7 +16,7 @@ import { Preloader } from "@/components/preloader";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Home() {
+export default function App() {
   useEffect(() => {
     const lenis = new Lenis({ duration: 1.4, smoothWheel: true });
     lenis.on("scroll", ScrollTrigger.update);
