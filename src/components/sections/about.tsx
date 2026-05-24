@@ -34,8 +34,7 @@ export function AboutSection() {
           <div className="about-left relative order-2 lg:order-1">
             <div className="relative max-w-[400px] mx-auto">
               <div className="glass-card rounded-3xl overflow-hidden aspect-[4/5] relative">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Dipesh Sharma" className="w-full h-full object-cover" />
+                <img src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Dipesh Sharma" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
                 <div className="absolute bottom-5 left-4 right-4 grid grid-cols-2 gap-2.5">
                   {aboutConfig.facts.map((f) => (

@@ -5,6 +5,7 @@ import { siteConfig } from "@/data/config";
 import { SiGithub, SiLeetcode } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
+import emailjs from "@emailjs/browser";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -12,7 +13,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [submitted, setSubmitted] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -23,10 +25,30 @@ export function ContactSection() {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    if (!formRef.current) return;
+    setStatus("sending");
+
+    try {
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_portfolio";
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_contact";
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
+
+      if (publicKey) {
+        await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
+      } else {
+        const formData = new FormData(formRef.current);
+        const mailtoLink = `mailto:${siteConfig.email}?subject=${encodeURIComponent(formData.get("subject") as string || "Portfolio Contact")}&body=${encodeURIComponent(`From: ${formData.get("from_name")} (${formData.get("from_email")})\n\n${formData.get("message")}`)}`;
+        window.open(mailtoLink, "_blank");
+      }
+      setStatus("sent");
+      formRef.current.reset();
+      setTimeout(() => setStatus("idle"), 4000);
+    } catch {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }
   };
 
   return (
@@ -61,14 +83,14 @@ export function ContactSection() {
 
             <div className="glass-card rounded-2xl p-6">
               <h3 className="font-display font-bold text-sm mb-4">Connect With Me</h3>
-              <div className="flex gap-3">
+              <div className="flex gap-3 flex-wrap">
                 {[
-                  { href: siteConfig.social.github, icon: SiGithub, label: "GitHub", color: "#f0f0f0" },
-                  { href: siteConfig.social.linkedin, icon: FaLinkedin, label: "LinkedIn", color: "#0077b5" },
-                  { href: siteConfig.social.leetcode, icon: SiLeetcode, label: "LeetCode", color: "#ffa116" },
-                ].map(({ href, icon: Icon, label, color }) => (
+                  { href: siteConfig.social.github, icon: SiGithub, label: "GitHub" },
+                  { href: siteConfig.social.linkedin, icon: FaLinkedin, label: "LinkedIn" },
+                  { href: siteConfig.social.leetcode, icon: SiLeetcode, label: "LeetCode" },
+                ].map(({ href, icon: Icon, label }) => (
                   <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all text-xs font-mono">
-                    <Icon size={14} style={{ color }} /> {label}
+                    <Icon size={14} /> {label}
                   </a>
                 ))}
               </div>
@@ -76,29 +98,30 @@ export function ContactSection() {
           </div>
 
           <div className="contact-right">
-            <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-6 flex flex-col gap-4">
+            <form ref={formRef} onSubmit={handleSubmit} className="glass-card rounded-2xl p-6 flex flex-col gap-4">
               <h3 className="font-display font-bold text-lg mb-1">Send a Message</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1.5">
                   <label className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">Name</label>
-                  <input type="text" required className="bg-secondary/50 border border-border/60 rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors" placeholder="Your name" />
+                  <input name="from_name" type="text" required className="bg-secondary/50 border border-border/60 rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors" placeholder="Your name" />
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">Email</label>
-                  <input type="email" required className="bg-secondary/50 border border-border/60 rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors" placeholder="your@email.com" />
+                  <input name="from_email" type="email" required className="bg-secondary/50 border border-border/60 rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors" placeholder="your@email.com" />
                 </div>
               </div>
               <div className="flex flex-col gap-1.5">
                 <label className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">Subject</label>
-                <input type="text" required className="bg-secondary/50 border border-border/60 rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors" placeholder="What's this about?" />
+                <input name="subject" type="text" required className="bg-secondary/50 border border-border/60 rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors" placeholder="What's this about?" />
               </div>
               <div className="flex flex-col gap-1.5">
                 <label className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">Message</label>
-                <textarea required rows={4} className="bg-secondary/50 border border-border/60 rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors resize-none" placeholder="Your message..." />
+                <textarea name="message" required rows={4} className="bg-secondary/50 border border-border/60 rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 transition-colors resize-none" placeholder="Your message..." />
               </div>
-              <button type="submit" disabled={submitted} className="mt-2 px-6 py-3 bg-primary text-white font-medium text-sm rounded-xl hover:opacity-90 transition-opacity glow-sm disabled:opacity-60">
-                {submitted ? "Message Sent!" : "Send Message"}
+              <button type="submit" disabled={status === "sending"} className="mt-2 px-6 py-3 bg-primary text-white font-medium text-sm rounded-xl hover:opacity-90 transition-opacity glow-sm disabled:opacity-60">
+                {status === "sending" ? "Sending..." : status === "sent" ? "Message Sent!" : status === "error" ? "Failed - Try Again" : "Send Message"}
               </button>
+              {status === "sent" && <p className="font-mono text-xs text-emerald-400">Your message has been sent successfully!</p>}
             </form>
           </div>
         </div>

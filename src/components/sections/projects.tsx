@@ -101,7 +101,7 @@ export function ProjectsSection() {
           <h2 className="font-display font-bold text-[clamp(2.2rem,5vw,3.5rem)] leading-tight">Featured <span className="text-gradient">Projects</span></h2>
           <p className="mt-4 text-muted-foreground text-sm max-w-lg mx-auto leading-relaxed">Production applications built with modern web technologies and AI/ML capabilities.</p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-5">{projects.map((p, i) => (<ProjectCard key={p.id} project={p} index={i} onClick={() => setSelected(p)} />))}</div>
+        <div className="grid md:grid-cols-2 gap-5">{projects.map((p, i) => (<ProjectCard key={p.id} project={p} index={i} onClick={() => setSelected(p)} />))}</div>
         <div className="text-center mt-12"><a href="https://github.com/123DS9472396" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-2.5 border border-border rounded-full font-mono text-xs text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all"><SiGithub size={14} /> More on GitHub</a></div>
       </div>
       {selected && <ProjectModal project={selected} onClose={() => setSelected(null)} />}

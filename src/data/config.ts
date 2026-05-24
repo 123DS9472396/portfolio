@@ -3,7 +3,7 @@ export const siteConfig = {
   title: "Dipesh Sharma | Full-Stack Developer & ML Engineer",
   description:
     "Computer Engineering Undergrad '26 | Full-Stack Developer | ML & Data Science. Open to full-time SDE roles.",
-  email: "dipeshsharma34@apsit.edu.in",
+  email: "ds9472396ss@gmail.com",
   phone: "+91-9702575008",
   site: "https://dipeshsharma.me",
   social: {
@@ -65,11 +65,33 @@ export const experienceConfig = [
 ];
 
 export const certificationsConfig = [
-  { title: "Google Data Analytics", issuer: "Google", date: "Sep 2024" },
-  { title: "Google AI-ML", issuer: "EduSkills", date: "Jul 2024" },
+  { title: "Google Data Analytics Professional", issuer: "Google", date: "Sep 2024" },
+  { title: "Google AI-ML Virtual Internship", issuer: "EduSkills", date: "Jul 2024" },
   { title: "AWS Academy Data Engineering", issuer: "Amazon Web Services", date: "Oct 2023" },
   { title: "AWS Academy Cloud Foundations", issuer: "Amazon Web Services", date: "Oct 2023" },
+  { title: "AWS Academy Cloud Architecting", issuer: "Amazon Web Services", date: "2024" },
+  { title: "Cisco Networking Basics", issuer: "Cisco", date: "2023" },
   { title: "Getting Started with Deep Learning", issuer: "NVIDIA", date: "2024" },
+];
+
+export const leadershipConfig = [
+  {
+    role: "Team Leader",
+    org: "HackScript 6.0 Hackathon",
+    description: "Led Team CodeBreakers to Top 5 finish among 55+ teams. Coordinated task distribution, managed deadlines, and ensured smooth integration of frontend, backend, and AI modules.",
+  },
+  {
+    role: "Core Member",
+    org: "AI/ML Club, APSIT",
+    link: "https://www.linkedin.com/company/aiml-club-apsit/",
+    description: "Actively contributed to sessions, mentored juniors in project building, and facilitated coding discussions on DSA and machine learning.",
+  },
+  {
+    role: "Member",
+    org: "Data Science Club, APSIT",
+    link: "https://www.linkedin.com/in/apsits-dsa-club",
+    description: "Participated in data science workshops, contributed to peer learning sessions on analytics and ML techniques.",
+  },
 ];
 
 export const skillsConfig = {
@@ -90,8 +112,10 @@ export const skillsConfig = {
   backend: [
     { name: "Node.js", level: 88 },
     { name: "Express.js", level: 85 },
+    { name: "Flask", level: 75 },
     { name: "MySQL", level: 82 },
     { name: "MongoDB", level: 80 },
+    { name: "PostgreSQL", level: 78 },
     { name: "Supabase", level: 82 },
     { name: "Firebase", level: 75 },
   ],
@@ -105,7 +129,8 @@ export const skillsConfig = {
   tools: [
     { name: "Git/GitHub", level: 92 },
     { name: "Postman", level: 85 },
-    { name: "JWT", level: 82 },
+    { name: "VS Code", level: 90 },
     { name: "Vercel/Render", level: 82 },
+    { name: "AWS", level: 72 },
   ],
 };

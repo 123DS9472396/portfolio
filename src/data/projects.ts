@@ -2,14 +2,14 @@ export interface Project {
   id: string;
   title: string;
   category: string;
+  color: string;
   description: string;
   longDescription: string;
+  highlights: string[];
+  tech: { frontend: string[]; backend: string[] };
+  image: string;
   github: string;
   live?: string;
-  image: string;
-  tech: { frontend: string[]; backend: string[] };
-  highlights: string[];
-  color: string;
 }
 
 export const projects: Project[] = [
@@ -17,97 +17,92 @@ export const projects: Project[] = [
     id: "smartspace",
     title: "SmartSpace",
     category: "Full Stack / ML",
+    color: "#3b82f6",
     description:
-      "Full-stack logistics platform with RLS-secured multi-role access, ML recommendation engine (87.9% accuracy), and Meta Llama 3.3 70B for natural language property search.",
+      "Full-stack logistics platform with RLS-secured multi-role access, ML recommendation engine, and real-time inventory tracking for 72+ warehouses across Maharashtra.",
     longDescription:
-      "SmartSpace is a production-grade warehouse management platform built with React, Node.js, and Supabase. Features include RLS-secured multi-role access control, an interactive 3D booking grid, and Recharts analytics dashboards. The ML recommendation engine achieves 87.9% accuracy with a dynamic pricing tool. Integrated Meta Llama 3.3 70B for natural language property search and AI-generated descriptions explaining ranking logic.",
-    github: "https://github.com/123DS9472396/smartspace",
-    image: "https://images.pexels.com/photos/1427107/pexels-photo-1427107.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tech: {
-      frontend: ["React", "TailwindCSS", "Recharts", "Vite"],
-      backend: ["Node.js", "Supabase", "ML Engine", "Llama 3.3"],
-    },
+      "SmartSpace is a full-stack warehouse logistics platform built with React, TailwindCSS, and Supabase. It features AI-powered recommendations using cosine similarity, multi-role JWT authentication (seeker/owner/admin), real-time inventory management, and a responsive 3D grid UI with interactive dashboards.",
     highlights: [
-      "RLS-secured multi-role access (Seeker, Owner, Admin)",
-      "Interactive 3D booking grid with real-time analytics",
-      "ML recommendation engine with 87.9% accuracy",
-      "Dynamic pricing tool for competitive rental rates",
-      "Meta Llama 3.3 70B for NL property search",
-      "AI-generated descriptions explaining ranking logic",
+      "AI-powered warehouse recommendations using ML cosine similarity",
+      "Multi-role authentication (Seeker, Owner, Admin) with RLS policies",
+      "Real-time inventory tracking with live updates across 72+ warehouses",
+      "Interactive dashboards with Recharts and 3D grid visualization",
+      "Smart booking system with automated notifications",
     ],
-    color: "#10b981",
+    tech: {
+      frontend: ["React", "TailwindCSS", "Recharts", "3D Grid UI"],
+      backend: ["Supabase", "PostgreSQL", "RLS", "ML Engine"],
+    },
+    image: "https://images.pexels.com/photos/4481259/pexels-photo-4481259.jpeg?auto=compress&cs=tinysrgb&w=800",
+    github: "https://github.com/123DS9472396/smart-space",
   },
   {
     id: "omnidetector",
     title: "OmniDetector Ultimate",
     category: "AI / Computer Vision",
+    color: "#06b6d4",
     description:
-      "Real-time computer vision web app using Streamlit and WebRTC for live video streaming, performing object detection across 80+ classes via YOLO models.",
+      "Real-time computer vision web app using Streamlit and WebRTC for live video streaming, multi-object detection with YOLOv8, and interactive analytics.",
     longDescription:
-      "Real-time computer vision web application built with Streamlit and WebRTC for live video streaming. Performs object detection across 80+ COCO classes via pre-trained YOLO models (YOLOv8n/s/m). Includes ML analytics pipeline using Scikit-Learn (K-Means, PCA) for live clustering insights without GPU. Plotly dashboards for real-time multi-model comparisons with adjustable thresholds and CSV export.",
-    github: "https://github.com/123DS9472396/omnidetector-ultimate",
-    live: "https://omnidetector.streamlit.app/",
-    image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tech: {
-      frontend: ["Streamlit", "Plotly", "WebRTC"],
-      backend: ["Python", "YOLOv8", "OpenCV", "Scikit-Learn"],
-    },
+      "OmniDetector Ultimate v3.0 is a real-time object detection platform supporting video, image, and webcam feeds. Built with Streamlit, YOLOv8, and WebRTC, it delivers blazing-fast inference with interactive Plotly visualizations and confidence-based filtering.",
     highlights: [
-      "Real-time detection across 80+ COCO classes",
-      "Live video streaming with WebRTC",
-      "3 YOLO variants (n/s/m) with adjustable confidence",
-      "ML pipeline: K-Means, PCA on detection data",
-      "Live Plotly dashboards for model comparison",
-      "CPU-optimized, no GPU required; CSV export",
+      "Real-time webcam object detection using WebRTC streaming",
+      "Multi-source input: video files, images, and live camera feed",
+      "YOLOv8 inference with configurable confidence thresholds",
+      "Interactive Plotly dashboards for detection analytics",
+      "Batch processing with export and session history tracking",
     ],
-    color: "#3b82f6",
+    tech: {
+      frontend: ["Streamlit", "Plotly", "WebRTC", "Python"],
+      backend: ["YOLOv8", "OpenCV", "NumPy", "Ultralytics"],
+    },
+    image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800",
+    github: "https://github.com/123DS9472396/OmniDetector-Ultimate",
   },
   {
     id: "ai-doctor",
     title: "AI Doctor 2.0",
     category: "AI / Healthcare",
+    color: "#10b981",
     description:
-      "Multi-modal healthcare AI with hybrid LLM + ML risk engine supporting text, image, and voice inputs for clinical decision support.",
+      "Production-ready multi-modal healthcare AI with hybrid LLM + ML risk engine, supporting text, image, and voice inputs for clinical decision support.",
     longDescription:
-      "Next-generation clinical decision support platform leveraging multi-modal AI (text, image, voice). Hybrid AI engine combining GROQ Llama 4 with custom ML risk scoring for 40% higher diagnostic accuracy. Specialization-aware for Dermatology, Cardiology, Neurology. RAG integration, Whisper STT, GROQ Vision API, and ElevenLabs TTS for voice-first accessibility.",
-    github: "https://github.com/123DS9472396/medical-diagnostic-agent",
-    image: "https://images.pexels.com/photos/7579831/pexels-photo-7579831.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "AI Doctor 2.0 is a comprehensive clinical decision support system featuring multi-modal inputs (text symptoms, medical images, voice descriptions). It uses a hybrid LLM + ML risk engine with evidence-based differential diagnosis and predictive analytics.",
+    highlights: [
+      "Multi-modal input: text symptoms, medical images, voice descriptions",
+      "Hybrid LLM + ML risk assessment engine for clinical analysis",
+      "Evidence-based differential diagnosis with confidence scoring",
+      "Predictive analytics for treatment outcome modeling",
+      "Real-time medical image analysis with CNN classification",
+    ],
     tech: {
       frontend: ["Next.js", "TypeScript", "shadcn/ui", "Recharts"],
-      backend: ["FastAPI", "GROQ API", "Llama 4", "Whisper", "LangChain"],
+      backend: ["Python", "TensorFlow", "LLM API", "Flask", "CNN", "NLP"],
     },
-    highlights: [
-      "Hybrid LLM + ML risk engine (40% improved accuracy)",
-      "Multi-modal: text, medical images, voice",
-      "RAG with medical knowledge base",
-      "Specialization: Dermatology, Cardiology, Neurology",
-      "Whisper STT and ElevenLabs TTS",
-      "Admin & Doctor analytics portal",
-    ],
-    color: "#ef4444",
+    image: "https://images.pexels.com/photos/7579831/pexels-photo-7579831.jpeg?auto=compress&cs=tinysrgb&w=800",
+    github: "https://github.com/123DS9472396/AI-Doctor",
   },
   {
     id: "forgery-detection",
     title: "Forgery Detection System",
     category: "AI / Security",
+    color: "#ef4444",
     description:
-      "AI-powered document forgery detection verifying bank statements, Aadhaar, PAN cards using SSIM, ELA, CNN, and OCR with real-time fraud scoring.",
+      "AI-powered document forgery detection system verifying authenticity of bank statements, Aadhaar cards, PAN cards, and legal agreements using computer vision and ML.",
     longDescription:
-      "AI-powered document forgery detection system verifying bank statements, Aadhaar cards, PAN cards, and legal agreements. Uses SSIM (Structural Similarity Index), ELA (Error Level Analysis), CNN classification, and OCR text extraction. Real-time dashboard visualizes fraud scores and highlights forged sections.",
-    github: "https://github.com/123DS9472396/forgery-detection",
-    image: "https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tech: {
-      frontend: ["Dashboard UI", "Visualization"],
-      backend: ["Python", "OpenCV", "CNN", "OCR", "SSIM"],
-    },
+      "Built for HackScript 6.0 hackathon (Top 5 among 55+ teams), this system detects forgery in bank statements, government IDs (Aadhaar/PAN), and legal documents using SSIM, Error Level Analysis (ELA), CNN, Isolation Forest anomaly detection, and OCR for text tampering verification.",
     highlights: [
-      "Verifies bank statements, Aadhaar, PAN cards",
-      "SSIM for structural similarity comparison",
-      "ELA for compression artifact detection",
-      "CNN-based tampered document classification",
-      "OCR text extraction and cross-validation",
-      "Real-time fraud score dashboard",
+      "SSIM and Error Level Analysis (ELA) for image tampering detection",
+      "CNN + Isolation Forest algorithms for anomaly detection and fraud verification",
+      "OCR-based text tampering verification on bank statements and IDs",
+      "Real-time dashboard with fraud score visualization and highlighted forged sections",
+      "Top 5 finish among 55+ teams at HackScript 6.0 national hackathon",
     ],
-    color: "#f59e0b",
+    tech: {
+      frontend: ["Dashboard UI", "Real-time Visualization", "Python", "Flask"],
+      backend: ["TensorFlow", "OpenCV", "OCR", "SSIM/ELA", "CNN", "Isolation Forest"],
+    },
+    image: "https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=800",
+    github: "https://github.com/123DS9472396/Forgery-Detection",
   },
 ];

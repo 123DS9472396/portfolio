@@ -1,33 +1,28 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 export function Preloader() {
-  const overlayRef = useRef<HTMLDivElement>(null);
-  const barRef = useRef<HTMLDivElement>(null);
-  const countRef = useRef<HTMLSpanElement>(null);
-  const nameRef = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(true);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!overlayRef.current || !barRef.current || !countRef.current) return;
     const tl = gsap.timeline();
-    const count = { val: 0 };
-    tl.to(count, { val: 100, duration: 1.6, ease: "power2.inOut", onUpdate() { if (countRef.current) countRef.current.textContent = `${Math.round(count.val)}`; if (barRef.current) barRef.current.style.width = `${count.val}%`; } })
-      .to(nameRef.current, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, "-=0.8")
-      .to(overlayRef.current, { yPercent: -100, duration: 0.9, ease: "power4.inOut", delay: 0.2, onComplete: () => setVisible(false) });
-    return () => { tl.kill(); };
+    tl.fromTo(".preloader-char", { y: 80, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.05, duration: 0.6, ease: "power3.out" })
+      .to(".preloader-char", { y: -40, opacity: 0, stagger: 0.03, duration: 0.4, ease: "power2.in" }, "+=0.6")
+      .to(ref.current, { yPercent: -100, duration: 0.7, ease: "power3.inOut" }, "-=0.2");
   }, []);
 
-  if (!visible) return null;
+  const chars = "DS.dev".split("");
+
   return (
-    <div ref={overlayRef} className="preloader-overlay">
-      <div className="flex flex-col items-center gap-10 w-64">
-        <div ref={nameRef} className="font-display font-bold text-3xl text-gradient opacity-0" style={{ transform: "translateY(20px)" }}>Dipesh Sharma</div>
-        <div className="w-full flex flex-col gap-3">
-          <div className="h-px bg-border w-full overflow-hidden rounded-full"><div ref={barRef} className="h-full bg-gradient-to-r from-blue-500 to-teal-400 rounded-full" style={{ width: "0%" }} /></div>
-          <div className="flex justify-between"><span className="font-mono text-xs text-muted-foreground">Loading</span><span className="font-mono text-xs text-primary"><span ref={countRef}>0</span>%</span></div>
-        </div>
+    <div ref={ref} className="preloader">
+      <div className="preloader-text flex">
+        {chars.map((c, i) => (
+          <span key={i} className="preloader-char inline-block" style={{ opacity: 0 }}>
+            {c === " " ? "\u00A0" : c}
+          </span>
+        ))}
       </div>
     </div>
   );

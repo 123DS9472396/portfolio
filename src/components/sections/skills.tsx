@@ -7,8 +7,10 @@ import {
   SiGreensock, SiBootstrap, SiNodedotjs, SiPython, SiExpress,
   SiPostgresql, SiSupabase, SiMongodb, SiMysql, SiFirebase,
   SiOpencv, SiScikitlearn, SiTensorflow, SiNumpy,
-  SiGit, SiPostman, SiVercel, SiStreamlit
+  SiGit, SiPostman, SiVercel, SiStreamlit, SiFlask
 } from "react-icons/si";
+import { FaAws } from "react-icons/fa";
+import { VscCode } from "react-icons/vsc";
 import { BsBraces, BsShieldLock } from "react-icons/bs";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -19,10 +21,11 @@ const SKILL_ICONS: Record<string, React.ElementType> = {
   "Python": SiPython, "JavaScript": SiJavascript, "TypeScript": SiTypescript, "SQL": SiPostgresql,
   "React.js": SiReact, "Next.js": SiNextdotjs, "HTML/CSS": SiHtml5, "Tailwind CSS": SiTailwindcss,
   "Bootstrap": SiBootstrap, "GSAP": SiGreensock, "Node.js": SiNodedotjs, "Express.js": SiExpress,
-  "MySQL": SiMysql, "MongoDB": SiMongodb, "Supabase": SiSupabase, "Firebase": SiFirebase,
+  "Flask": SiFlask, "MySQL": SiMysql, "MongoDB": SiMongodb, "PostgreSQL": SiPostgresql,
+  "Supabase": SiSupabase, "Firebase": SiFirebase,
   "Scikit-Learn": SiScikitlearn, "TensorFlow": SiTensorflow, "NumPy/Pandas": SiNumpy,
   "OpenCV": SiOpencv, "YOLOv8": BsBraces, "Git/GitHub": SiGit, "Postman": SiPostman,
-  "JWT": BsShieldLock, "Vercel/Render": SiVercel,
+  "VS Code": VscCode, "JWT": BsShieldLock, "Vercel/Render": SiVercel, "AWS": FaAws,
 };
 
 const CAT_META: Record<string, { label: string; accent: string }> = {
@@ -33,17 +36,29 @@ const CAT_META: Record<string, { label: string; accent: string }> = {
   tools: { label: "Tools & Platforms", accent: "#14b8a6" },
 };
 
-const MARQUEE_ITEMS: { name: string; icon: React.ElementType }[] = [
-  { name: "React", icon: SiReact }, { name: "TypeScript", icon: SiTypescript },
-  { name: "Next.js", icon: SiNextdotjs }, { name: "Node.js", icon: SiNodedotjs },
-  { name: "Python", icon: SiPython }, { name: "Express.js", icon: SiExpress },
-  { name: "Tailwind CSS", icon: SiTailwindcss }, { name: "Supabase", icon: SiSupabase },
-  { name: "PostgreSQL", icon: SiPostgresql }, { name: "MongoDB", icon: SiMongodb },
-  { name: "MySQL", icon: SiMysql }, { name: "YOLOv8", icon: BsBraces },
-  { name: "OpenCV", icon: SiOpencv }, { name: "Scikit-Learn", icon: SiScikitlearn },
-  { name: "TensorFlow", icon: SiTensorflow }, { name: "Git", icon: SiGit },
-  { name: "Streamlit", icon: SiStreamlit }, { name: "Vercel", icon: SiVercel },
-  { name: "Firebase", icon: SiFirebase }, { name: "NumPy", icon: SiNumpy },
+const MARQUEE_ITEMS: { name: string; Icon: React.ElementType }[] = [
+  { name: "React", Icon: SiReact },
+  { name: "TypeScript", Icon: SiTypescript },
+  { name: "Next.js", Icon: SiNextdotjs },
+  { name: "Node.js", Icon: SiNodedotjs },
+  { name: "Python", Icon: SiPython },
+  { name: "Express.js", Icon: SiExpress },
+  { name: "Tailwind CSS", Icon: SiTailwindcss },
+  { name: "Supabase", Icon: SiSupabase },
+  { name: "PostgreSQL", Icon: SiPostgresql },
+  { name: "MongoDB", Icon: SiMongodb },
+  { name: "MySQL", Icon: SiMysql },
+  { name: "YOLOv8", Icon: BsBraces },
+  { name: "OpenCV", Icon: SiOpencv },
+  { name: "Scikit-Learn", Icon: SiScikitlearn },
+  { name: "TensorFlow", Icon: SiTensorflow },
+  { name: "Git", Icon: SiGit },
+  { name: "Streamlit", Icon: SiStreamlit },
+  { name: "Vercel", Icon: SiVercel },
+  { name: "Firebase", Icon: SiFirebase },
+  { name: "NumPy", Icon: SiNumpy },
+  { name: "Flask", Icon: SiFlask },
+  { name: "AWS", Icon: FaAws },
 ];
 
 export function SkillsSection() {
@@ -102,11 +117,10 @@ export function SkillsSection() {
           })}
         </div>
 
-        {/* Marquee with Icons */}
         <div className="marquee-outer py-2">
           <div className="marquee-track">
             <div className="marquee-track-inner">
-              {MARQUEE_ITEMS.map(({ name, icon: Icon }) => (
+              {MARQUEE_ITEMS.map(({ name, Icon }) => (
                 <span key={name} className="flex items-center gap-2 font-mono text-xs text-muted-foreground/70 px-3 py-1.5 border border-border/40 rounded-lg whitespace-nowrap hover:border-primary/30 hover:text-primary/80 transition-colors">
                   <Icon size={14} className="flex-shrink-0" />
                   {name}
@@ -114,8 +128,8 @@ export function SkillsSection() {
               ))}
             </div>
             <div className="marquee-track-inner" aria-hidden="true">
-              {MARQUEE_ITEMS.map(({ name, icon: Icon }) => (
-                <span key={name + "-2"} className="flex items-center gap-2 font-mono text-xs text-muted-foreground/70 px-3 py-1.5 border border-border/40 rounded-lg whitespace-nowrap">
+              {MARQUEE_ITEMS.map(({ name, Icon }) => (
+                <span key={`${name}-dup`} className="flex items-center gap-2 font-mono text-xs text-muted-foreground/70 px-3 py-1.5 border border-border/40 rounded-lg whitespace-nowrap">
                   <Icon size={14} className="flex-shrink-0" />
                   {name}
                 </span>
