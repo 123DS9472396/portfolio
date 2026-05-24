@@ -4,7 +4,7 @@ import { SiGithub, SiLeetcode } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 import gsap from "gsap";
 
-const roles = ["Full Stack Developer", "AI/ML Engineer", "React & TypeScript", "Open Source Builder"];
+const roles = ["Full Stack Developer", "AI/ML Engineer", "Generative AI", "Open Source Contributor"];
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);

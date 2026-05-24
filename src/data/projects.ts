@@ -34,7 +34,7 @@ export const projects: Project[] = [
     longDescription: "OmniDetector Ultimate v3.0 is a real-time object detection platform supporting video, image, and webcam feeds. Built with Streamlit, YOLOv8, and WebRTC, it delivers blazing-fast inference with interactive Plotly visualizations and confidence-based filtering.",
     highlights: ["Real-time webcam object detection using WebRTC streaming", "Multi-source input: video files, images, and live camera feed", "YOLOv8 inference with configurable confidence thresholds", "Interactive Plotly dashboards for detection analytics", "Batch processing with export and session history tracking"],
     tech: { frontend: ["Streamlit", "Plotly", "WebRTC", "Python"], backend: ["YOLOv8", "OpenCV", "NumPy", "Ultralytics"] },
-    image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.pexels.com/photos/5473955/pexels-photo-5473955.jpeg?auto=compress&cs=tinysrgb&w=800",
     github: "https://github.com/123DS9472396/OmniDetector-Ultimate",
   },
   {
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     longDescription: "Built for HackScript 6.0 hackathon (Top 5 among 55+ teams), this system detects forgery in bank statements, government IDs (Aadhaar/PAN), and legal documents using SSIM, Error Level Analysis (ELA), CNN, Isolation Forest anomaly detection, and OCR for text tampering verification.",
     highlights: ["SSIM and Error Level Analysis (ELA) for image tampering detection", "CNN + Isolation Forest algorithms for anomaly detection and fraud verification", "OCR-based text tampering verification on bank statements and IDs", "Real-time dashboard with fraud score visualization and highlighted forged sections", "Top 5 finish among 55+ teams at HackScript 6.0 national hackathon"],
     tech: { frontend: ["Dashboard UI", "Real-time Visualization", "Python", "Flask"], backend: ["TensorFlow", "OpenCV", "OCR", "SSIM/ELA", "CNN", "Isolation Forest"] },
-    image: "https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "https://images.pexels.com/photos/6980358/pexels-photo-6980358.jpeg?auto=compress&cs=tinysrgb&w=800",
     github: "https://github.com/123DS9472396/Forgery-Detection",
   },
 ];
