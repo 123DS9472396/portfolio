@@ -34,7 +34,7 @@ export function ContactSection() {
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_contact";
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "";
 
-      if (publicKey) {
+      if (publicKey && publicKey !== "placeholder") {
         await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
       } else {
         const formData = new FormData(formRef.current);
@@ -120,7 +120,7 @@ export function ContactSection() {
               <button type="submit" disabled={status === "sending"} className="mt-2 px-6 py-3 bg-primary text-white font-medium text-sm rounded-xl hover:opacity-90 transition-opacity glow-sm disabled:opacity-60">
                 {status === "sending" ? "Sending..." : status === "sent" ? "Message Sent!" : status === "error" ? "Failed - Try Again" : "Send Message"}
               </button>
-              {status === "sent" && <p className="font-mono text-xs text-emerald-400">Your message has been sent successfully!</p>}
+              {status === "sent" && <p className="font-mono text-xs text-emerald-400">Your message has been sent to {siteConfig.email}!</p>}
             </form>
           </div>
         </div>

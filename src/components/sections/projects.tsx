@@ -91,7 +91,7 @@ export function ProjectsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="projects" className="py-32 relative">
+    <section ref={sectionRef} id="projects" className="py-24 relative">
       <div className="section-container">
         <div className="proj-header text-center mb-16">
           <div className="section-label justify-center mb-3"><span className="font-mono text-xs text-primary tracking-[0.2em] uppercase">Work</span></div>

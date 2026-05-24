@@ -1,8 +1,7 @@
 export const siteConfig = {
   name: "Dipesh Sharma",
   title: "Dipesh Sharma | Full-Stack Developer & ML Engineer",
-  description:
-    "Computer Engineering Undergrad '26 | Full-Stack Developer | ML & Data Science. Open to full-time SDE roles.",
+  description: "Computer Engineering Undergrad '26 | Full-Stack Developer | ML & Data Science. Open to full-time SDE roles.",
   email: "ds9472396ss@gmail.com",
   phone: "+91-9702575008",
   site: "https://dipeshsharma.me",
@@ -29,39 +28,9 @@ export const aboutConfig = {
 };
 
 export const experienceConfig = [
-  {
-    role: "SDE Intern",
-    company: "ITJOBXS",
-    subtitle: "Jobs & Education Platform",
-    type: "Remote",
-    period: "Apr 2025 - Present",
-    location: "Mumbai",
-    description:
-      "Diagnosed a critical bot-spam vulnerability; implemented a PHP hashmap of 100+ validated email domains and Google reCAPTCHA, cutting spam registrations by ~60%. Built end-to-end MERN stack apps for an external client — E-Commerce platform and Student Management System with JWT auth and role-based access control.",
-    tech: ["PHP", "MERN Stack", "JWT", "reCAPTCHA", "MySQL", "React"],
-  },
-  {
-    role: "SDE Intern",
-    company: "Mernix Consulting",
-    subtitle: "Freelance Project",
-    type: "Remote",
-    period: "Jan 2025 - Feb 2025",
-    location: "Thane",
-    description:
-      "Built a full-stack Newsletter Subscription App with Nodemailer automated confirmations and debounced API calls for real-time subscription status checks. Optimized backend with a MySQL connection pool; deployed on Firebase (frontend) and Render (backend) with environment-based credential management.",
-    tech: ["Node.js", "MySQL", "Nodemailer", "Firebase", "Render", "Express.js"],
-  },
-  {
-    role: "Data Science Intern",
-    company: "MedTourEasy",
-    subtitle: "Healthcare & Tourism Platform",
-    type: "Hybrid",
-    period: "Sep 2024 - Oct 2024",
-    location: "Gurugram",
-    description:
-      "Built a content-based ML recommendation system using word embeddings and t-SNE dimensionality reduction on 200+ cosmetic products, improving match accuracy by 75%. Designed interactive dashboards mapping product similarities and safety profiles, boosting stakeholder decision-making efficiency by 30%.",
-    tech: ["Python", "Scikit-Learn", "t-SNE", "Pandas", "Matplotlib", "NLP"],
-  },
+  { role: "SDE Intern", company: "ITJOBXS", subtitle: "Jobs & Education Platform", type: "Remote", period: "Apr 2025 - Present", location: "Mumbai", description: "Diagnosed a critical bot-spam vulnerability; implemented a PHP hashmap of 100+ validated email domains and Google reCAPTCHA, cutting spam registrations by ~60%. Built end-to-end MERN stack apps for an external client — E-Commerce platform and Student Management System with JWT auth and role-based access control.", tech: ["PHP", "MERN Stack", "JWT", "reCAPTCHA", "MySQL", "React"] },
+  { role: "SDE Intern", company: "Mernix Consulting", subtitle: "Freelance Project", type: "Remote", period: "Jan 2025 - Feb 2025", location: "Thane", description: "Built a full-stack Newsletter Subscription App with Nodemailer automated confirmations and debounced API calls for real-time subscription status checks. Optimized backend with a MySQL connection pool; deployed on Firebase (frontend) and Render (backend) with environment-based credential management.", tech: ["Node.js", "MySQL", "Nodemailer", "Firebase", "Render", "Express.js"] },
+  { role: "Data Science Intern", company: "MedTourEasy", subtitle: "Healthcare & Tourism Platform", type: "Hybrid", period: "Sep 2024 - Oct 2024", location: "Gurugram", description: "Built a content-based ML recommendation system using word embeddings and t-SNE dimensionality reduction on 200+ cosmetic products, improving match accuracy by 75%. Designed interactive dashboards mapping product similarities and safety profiles, boosting stakeholder decision-making efficiency by 30%.", tech: ["Python", "Scikit-Learn", "t-SNE", "Pandas", "Matplotlib", "NLP"] },
 ];
 
 export const certificationsConfig = [
@@ -75,23 +44,9 @@ export const certificationsConfig = [
 ];
 
 export const leadershipConfig = [
-  {
-    role: "Team Leader",
-    org: "HackScript 6.0 Hackathon",
-    description: "Led Team CodeBreakers to Top 5 finish among 55+ teams. Coordinated task distribution, managed deadlines, and ensured smooth integration of frontend, backend, and AI modules.",
-  },
-  {
-    role: "Core Member",
-    org: "AI/ML Club, APSIT",
-    link: "https://www.linkedin.com/company/aiml-club-apsit/",
-    description: "Actively contributed to sessions, mentored juniors in project building, and facilitated coding discussions on DSA and machine learning.",
-  },
-  {
-    role: "Member",
-    org: "Data Science Club, APSIT",
-    link: "https://www.linkedin.com/in/apsits-dsa-club",
-    description: "Participated in data science workshops, contributed to peer learning sessions on analytics and ML techniques.",
-  },
+  { role: "Team Leader", org: "HackScript 6.0 Hackathon", description: "Led Team CodeBreakers to Top 5 finish among 55+ teams. Coordinated task distribution, managed deadlines, and ensured smooth integration of frontend, backend, and AI modules." },
+  { role: "Core Member", org: "AI/ML Club, APSIT", link: "https://www.linkedin.com/company/aiml-club-apsit/", description: "Actively contributed to sessions, mentored juniors in project building, and facilitated coding discussions on DSA and machine learning." },
+  { role: "Member", org: "Data Science Club, APSIT", link: "https://www.linkedin.com/in/apsits-dsa-club", description: "Participated in data science workshops, contributed to peer learning sessions on analytics and ML techniques." },
 ];
 
 export const skillsConfig = {

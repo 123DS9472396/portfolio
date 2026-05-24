@@ -73,7 +73,7 @@ export function CertificationsSection() {
                 </div>
                 <p className="font-mono text-xs text-primary mb-2">{item.org}</p>
                 <p className="text-muted-foreground text-xs leading-relaxed">{item.description}</p>
-                {item.link && (
+                {"link" in item && item.link && (
                   <a href={item.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 mt-3 font-mono text-[10px] text-muted-foreground hover:text-primary transition-colors">
                     <HiExternalLink size={11} /> LinkedIn
                   </a>

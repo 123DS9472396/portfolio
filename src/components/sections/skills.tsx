@@ -75,7 +75,7 @@ export function SkillsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="skills" className="py-32 relative">
+    <section ref={sectionRef} id="skills" className="pt-32 pb-16 relative">
       <div className="absolute inset-0 grid-bg opacity-20" />
       <div className="orb orb-blue absolute w-[500px] h-[500px] top-0 left-1/2 -translate-x-1/2 opacity-30" />
 
@@ -86,7 +86,7 @@ export function SkillsSection() {
           <p className="mt-4 text-muted-foreground text-sm max-w-lg mx-auto leading-relaxed">Full-stack development, machine learning, and data science — from responsive UIs to intelligent backends.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
           {(Object.entries(skillsConfig) as [string, { name: string; level: number }[]][]).map(([key, skills]) => {
             const meta = CAT_META[key];
             if (!meta) return null;
