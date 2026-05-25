@@ -34,7 +34,7 @@ export const projects: Project[] = [
     longDescription: "OmniDetector Ultimate v3.0 is a real-time object detection platform supporting video, image, and webcam feeds. Built with Streamlit, YOLOv8, and WebRTC, it delivers blazing-fast inference with interactive Plotly visualizations and confidence-based filtering.",
     highlights: ["Real-time webcam object detection using WebRTC streaming", "Multi-source input: video files, images, and live camera feed", "YOLOv8 inference with configurable confidence thresholds", "Interactive Plotly dashboards for detection analytics", "Batch processing with export and session history tracking"],
     tech: { frontend: ["Streamlit", "Plotly", "WebRTC", "Python"], backend: ["YOLOv8", "OpenCV", "NumPy", "Ultralytics"] },
-    image: "/images/projects/omnidetector.jpeg",
+    image: "/images/projects/omnidetector.jpg",
     github: "https://github.com/123DS9472396/OmniDetector-Ultimate",
   },
   {
@@ -46,7 +46,7 @@ export const projects: Project[] = [
     longDescription: "AI Doctor 2.0 is a comprehensive clinical decision support system featuring multi-modal inputs (text symptoms, medical images, voice descriptions). It uses a hybrid LLM + ML risk engine with evidence-based differential diagnosis and predictive analytics.",
     highlights: ["Multi-modal input: text symptoms, medical images, voice descriptions", "Hybrid LLM + ML risk assessment engine for clinical analysis", "Evidence-based differential diagnosis with confidence scoring", "Predictive analytics for treatment outcome modeling", "Real-time medical image analysis with CNN classification"],
     tech: { frontend: ["Next.js", "TypeScript", "shadcn/ui", "Recharts"], backend: ["Python", "TensorFlow", "LLM API", "Flask", "CNN", "NLP"] },
-    image: "/images/projects/ai-doctor.jpeg",
+    image: "/images/projects/ai-doctor.png",
     github: "https://github.com/123DS9472396/medical-diagnostic-agent",
   },
   {
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     longDescription: "Built for HackScript 6.0 hackathon (Top 5 among 55+ teams), this system detects forgery in bank statements, government IDs (Aadhaar/PAN), and legal documents using SSIM, Error Level Analysis (ELA), CNN, Isolation Forest anomaly detection, and OCR for text tampering verification.",
     highlights: ["SSIM and Error Level Analysis (ELA) for image tampering detection", "CNN + Isolation Forest algorithms for anomaly detection and fraud verification", "OCR-based text tampering verification on bank statements and IDs", "Real-time dashboard with fraud score visualization and highlighted forged sections", "Top 5 finish among 55+ teams at HackScript 6.0 national hackathon"],
     tech: { frontend: ["Dashboard UI", "Real-time Visualization", "Python", "Flask"], backend: ["TensorFlow", "OpenCV", "OCR", "SSIM/ELA", "CNN", "Isolation Forest"] },
-    image: "/images/projects/forgery.jpeg",
+    image: "/images/projects/forgery.png",
     github: "https://github.com/123DS9472396/Forgery-Detection",
   },
 ];
