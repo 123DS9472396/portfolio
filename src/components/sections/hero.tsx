@@ -104,7 +104,7 @@ export function HeroSection() {
           <div className="hero-photo opacity-0 hidden lg:block">
             <div className="relative">
               <div className="w-[340px] h-[420px] rounded-3xl overflow-hidden border border-border/40 glow-primary">
-                <img src="https://avatars.githubusercontent.com/u/140637989?v=4" alt="Dipesh Sharma" className="w-full h-full object-cover object-top" />
+                <img src="/images/profile.png" alt="Dipesh Sharma" className="w-full h-full object-cover object-top" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5">
                   <div className="glass rounded-xl px-4 py-3">
