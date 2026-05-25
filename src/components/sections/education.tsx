@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { educationConfig } from "@/data/config";
-import { TbSchool, TbTrophy, TbUsers } from "react-icons/tb";
+import { TbTrophy, TbUsers } from "react-icons/tb";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -30,9 +30,7 @@ export function EducationSection() {
         <div className="max-w-5xl mx-auto">
           <div className="edu-card glass-card rounded-3xl p-8 border border-border/50 hover:border-primary/25 transition-colors duration-300">
             <div className="flex flex-col sm:flex-row items-start gap-6">
-              <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
-                <TbSchool size={28} className="text-primary" />
-              </div>
+              <img src={educationConfig.logo} alt={educationConfig.institution} className="w-16 h-16 rounded-2xl object-contain bg-white/10 p-1.5 border border-border/40 flex-shrink-0" />
 
               <div className="flex-1 w-full">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">

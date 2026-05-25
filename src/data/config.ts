@@ -40,6 +40,7 @@ export const educationConfig = {
   location: "Thane, Mumbai",
   period: "2022 - 2026",
   cgpa: "8.00",
+  logo: "/images/logos/AP_SHAH.jpg",
   highlights: [
     "Core Member - AI/ML Club, APSIT",
     "Member - Data Science Club, APSIT",
